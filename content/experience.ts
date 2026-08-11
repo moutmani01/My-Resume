@@ -39,6 +39,11 @@ export const experience: ExperienceEntry[] = [
           "Built secure, high-throughput CI/CD pipelines with Jenkins and GitLab. Integrated software composition analysis and registry isolation using Nexus, Harbor, Trivy, Dependency-Track, and Dependency-Check.",
       },
       {
+        label: "GitOps Transformation with ArgoCD",
+        detail:
+          "Drove 100% GitOps adoption across all Kubernetes projects using ArgoCD, fully automating build, ship, and run pipelines and establishing Git as the single source of truth for cluster state.",
+      },
+      {
         label: "Full-Stack Observability & Telemetry",
         detail:
           "Architected unified monitoring and log fabrics with Nagios, Grafana, ELK, and Dynatrace for proactive threat alerts, performance profiling, and cluster stability.",
@@ -55,6 +60,8 @@ export const experience: ExperienceEntry[] = [
       "Amazon Bedrock",
       "AKS",
       "EKS",
+      "ArgoCD",
+      "GitOps",
       "Jenkins",
       "GitLab",
       "Harbor",

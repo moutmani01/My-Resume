@@ -14,7 +14,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     category: "DevSecOps & Automation",
-    items: ["Jenkins", "GitLab CI/CD", "Ansible", "Puppet", "Docker", "Harbor", "Trivy"],
+    items: ["ArgoCD", "GitOps", "Jenkins", "GitLab CI/CD", "Ansible", "Puppet", "Docker", "Harbor", "Trivy"],
   },
   {
     category: "Kubernetes & Platforms",
