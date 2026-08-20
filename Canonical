@@ -1,12 +1,44 @@
 Engineering
 
 What kinds of software projects have you worked on before? Which development environments, languages, databases?
-i was always involved in my priouves experience as A devOps in software projects, worked in many ciritical applications (generally Java) and 
+I was always involved as a DevOps & Infrastructure engineer in software projects, worked on many critical applications and delivering the necessary tools to confirm that the code is secure and ready in time, working perfectly in production.
 
+I am not a developer, but I do have good knowledge of the Java development environment, worked on many applications in Python, ReactJS, and a little PHP — but again, not as a coder, but as a DevOps and infrastructure engineer, making sure everything else works and giving the developers the best environment possible to run their code.
+
+I have implemented many complex database architectures such as Oracle RAC, DB2 pureScale, PGpool with PostgreSQL, AlwaysOn MS SQL, and others for mission-critical applications that require zero downtime. I have helped developers optimize their SQL queries, worked with data engineers on their ETL, tuned database engines, worked on backups and restores, and worked on best security practices for databases/apps.
+
+I have had many projects where I had to migrate, by myself, legacy apps from old VMs (code in GitLab, barely any instructions on how to build or run it) to best practices and new technologies (building GitLab CI pipelines to build, test, check security, check code, and run on Kubernetes).
+
+...
 How extensive is your experience of Python software engineering? Would you describe yourself as a high quality coder? Why?
+I can’t describe myself as a high quality coder, mainly because I am not a developer. My Python experience came from infrastructure tasks. I was not following best coding practices of Python, but it was doing the job. Over time I’ve adopted better structuring practices for my scripts and apps, to keep everything organized and so it’s easy for someone else to use it and improve it.
+
+My experience with Python is just enough to automate and optimize my work. For example, I developed many Ansible tasks that can communicate with legacy apps by API, do repeated tasks, and run on all OS (Windows, AIX, RHEL).
+
+...
 What is your most senior role in a software engineering organisation? Describe your span of control, and the diversity of products, functions and teams you led.
+I was the DevOps team lead in my previous experience. I was the guy who brought DevOps, DevSecOps and Kubernetes technologies for the first time to the bank — the person who got involved in all critical new applications and projects, bringing my expertise in designing and in the implementation.
+
+My team was made of 6 amazing engineers with the label of the system infrastructure team, and I helped them get in touch with and learn all these new technologies at that time — from Docker/Kubernetes, to the DevOps toolchain (Ansible, GitLab CI, Jenkins, Nexus/Sonatype, SonarQube, OWASP ZAP and dependency check, ArgoCD, Harbor, Trivy…), to the observability stack with the ECK stack and LGTM stack.
+
+We had the chance to migrate many critical apps, like the mobile bank app, from legacy Java on VMs with no DevOps philosophy, to the benefit of the DevOps CI/CD toolchain running on Kubernetes, and being well observed by LGTM — which improved the availability of the app to 99.9%, and gave us answers we could never give before, like: why is the app slow? Which version is where? Is it an infrastructure issue, a code issue, or a user issue?
+
+Another chance we had was a major project bringing in a new Core Banking system, and even though it’s a very closed product, we managed to implement a CI/CD pipeline using Ansible and GitLab CI — improving time to market from weeks to minutes by automating every step possible across many teams.
+
+...
 What is your proudest success as an engineer?
+My proudest success is seeing the impact of my work — the one I always remember is from my previous job, where I had a meeting with the IT Director, Infrastructure Manager, Network Manager, and Security Manager.
+
+It was 3 months after I got in. I had gotten a report on all the main pains they had — from EOL machines, to vulnerabilities, to critical app complaints on availability and performance, and many other issues.
+
+I worked on each problem myself and improved the EOL machines (AIX, RHEL and Windows) from 130 to 6, improved the vulnerability percentage from 18% to 5%, fixed most of the unstable apps, and gave reports on my diagnostics for many slow apps.
+
+In that meeting, all those metrics were put in front of the directors, and I was called out by name and thanked by all of them.
+
+...
 Describe your experience building large systems with many services - web front ends, REST APIs, data stores, event processing and other kinds of integration between components. What are the key things to think about in regard to architecture, maintainability, and reliability in these large systems?
+
+
 How comprehensive would you say your knowledge of a Linux distribution is, from the kernel up? How familiar are you with low-level system architecture, runtimes and Linux distro packaging? How have you gained this knowledge?
 Describe your networking experience. How do you go about troubleshooting complex networks ?
 Describe your experience with large-scale IT operations, SAAS, Private Clouds or other running services, in a devops or IS or system administration capacity
