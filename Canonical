@@ -37,9 +37,18 @@ In that meeting, all those metrics were put in front of the directors, and I was
 
 ...
 Describe your experience building large systems with many services - web front ends, REST APIs, data stores, event processing and other kinds of integration between components. What are the key things to think about in regard to architecture, maintainability, and reliability in these large systems?
+One of the biggest projects I worked on is the mobile banking app, which has many components: the mobile app (iOS and Android) as the frontend, 11 microservices running in Kubernetes as the backend, which point to an API gateway, which in turn points to all the banking APIs and legacy systems. Oracle RAC is used as the database. The app gets a new version every couple of weeks with the help of CI/CD, everything is monitored by Dynatrace end to end, and production is replicated to a second data center (DC2), used as active-active (80%-20%).
 
+The key to getting a bulletproof system like this was an active-active architecture, which keeps the system available even if one data center fails.
 
+For reliability, each component is observed by one system, which gives better traces of every call and helps catch issues before they reach production or clients.
+
+For maintainability, the CI/CD pipeline includes automated quality and security gates (SonarQube, OWASP ZAP, dependency check, Trivy) before each release, so changes can go out every couple of weeks without maintainability being sacrificed for speed.
+
+...
 How comprehensive would you say your knowledge of a Linux distribution is, from the kernel up? How familiar are you with low-level system architecture, runtimes and Linux distro packaging? How have you gained this knowledge?
+
+
 Describe your networking experience. How do you go about troubleshooting complex networks ?
 Describe your experience with large-scale IT operations, SAAS, Private Clouds or other running services, in a devops or IS or system administration capacity
 Describe your experience with public cloud based operations - how well do you understand large-scale public cloud estate management and developer experience?
