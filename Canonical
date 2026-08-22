@@ -47,35 +47,109 @@ For maintainability, the CI/CD pipeline includes automated quality and security 
 
 ...
 How comprehensive would you say your knowledge of a Linux distribution is, from the kernel up? How familiar are you with low-level system architecture, runtimes and Linux distro packaging? How have you gained this knowledge?
+I know RPM well, as I have built RPM packages before. Systemd is also good for me. I am more familiar with the Fedora family than the Debian family, though I’ve worked on both using Foreman and Red Hat Satellite. I have a good base knowledge at the OS/service level, and good knowledge of the kernel and boot level (GRUB) — I’ve had a lot of experience with systems that can’t boot, multi-disk boot setups, mixed GRUB and Windows boot configurations, and corrupted OS recovery. That said, I don’t have hands-on experience with kernel modules or sysctl tuning. I do know /proc and how each process touches files or memory, but I’ve never done strace-level debugging.
 
+I gained the knowledge of RPM when I worked in my second job, as they were building their own software and installing it using RPM and dpkg. Also, with the bank, I had a lot of experience with open source packages that couldn’t be downloaded directly, as they worked on an air-gapped network — so I had to get the code for those packages, build it, package it in RPM, and install it. For Linux in general, it’s a day-to-day job: each time I get an issue or a new task I’ve never done before, I go learn it, then fix it.
 
+...
 Describe your networking experience. How do you go about troubleshooting complex networks ?
-Describe your experience with large-scale IT operations, SAAS, Private Clouds or other running services, in a devops or IS or system administration capacity
-Describe your experience with public cloud based operations - how well do you understand large-scale public cloud estate management and developer experience?
-What is the next technology you want to learn about, and why ? How do you plan on learning it ?
-Do you have experience with customer-facing roles ?
-Outline your software documentation experience.
+On the system and virtualization level, I do have experience and good analysis skills at the network level, to understand which layer an issue is coming from, including other network protocols like DHCP, link aggregation, and simple routing.
 
+For example, if I had an issue where two servers can’t communicate with each other, I start my analysis by going through all the layers — from physical, to VLAN, to IP configuration, to talking to the gateway, traceroute, checking ports, checking app level like HTTP headers or the protocol used…
+
+But everything beyond that — like complex routing (EIGRP or OSPF) or advanced network setups like SD-WAN — I understand the basics and fundamentals, but the network experts are the ones who handle it. So sometimes I can fix the issue myself, and sometimes it requires help from one of our network colleagues.
+
+...
+Describe your experience with large-scale IT operations, SAAS, Private Clouds or other running services, in a devops or IS or system administration capacity
+In a large-scale IT environment, it’s always good to have knowledge of ITIL, and understanding best practices is key to keeping a large-scale infrastructure stable. In my second job, I worked in a distributed environment of 4,500 servers across 3 continents, plus AWS, as a system administrator. I believe the key to good operations is automation and infrastructure as code — we used Ansible and Puppet to make everything into products and simplify the operations we had.
+
+The two biggest challenges we had were, first, migrating to AWS — you have to rethink each system rather than just migrating everything V2V. Sometimes it made sense to containerize the app and send it to ECS or EKS; sometimes you could merge 3 VMs (web, app, database) into one to reduce AWS usage. And on the other hand, working on legacy systems that hadn’t the chance to evolve to those best practices was challenging — you had to understand how the system works, read logs, test, and improve.
+
+...
+Describe your experience with public cloud based operations - how well do you understand large-scale public cloud estate management and developer experience?
+The two clouds I worked with the most are Azure in first place, and AWS in second.
+
+On AWS, I had the chance to be involved in a large project migrating private infrastructure to the cloud, working on a hybrid cloud where some apps on AWS had to communicate with apps on-premise. ELK on AWS was much easier to operate than the one on-premise.
+
+And on Azure, I had the chance in my third job to work on many projects:
+
+	•	Building a new DevOps toolchain based on Azure DevOps, and helping developers migrate from an on-premises toolchain to Azure. this toolchain work was really about developer experience, making it easier and faster for developers to ship
+	•	Working on Entra ID and M365 for many clients, helping them migrate from Exchange servers to the cloud, or use a hybrid system with Entra Connect and Exchange Hybrid
+	•	Azure VDI was also a very good solution — one client found it much cheaper and easier to manage, and we migrated workspaces from VMware Horizon VDI to Azure
+
+...
+What is the next technology you want to learn about, and why ? How do you plan on learning it ?
+Honestly, I want to learn more about AI and machine learning — how to feed your own data to AI to get very specific value out of it.
+
+For example, let’s say I have wiki documentation that covers every inch of my infrastructure. Feeding this data to an AI could help me solve issues much more easily — like “you’re getting this error because App31 is down, start it with this command.” This is just a simple idea in my head right now that I want to put into real life.
+
+Everyone sees AI as the future, like the invention of fire — it will change everything, and I plan to learn more and more about it. Over the next year, I want to go from fundamentals to hands-on practice: first, deepen my understanding of how ML and LLMs actually work (a few months), then build a real project using an existing well-known LLM fed with my own infrastructure data — like the wiki documentation example above — to get something working end to end (next few months). From there, I want to go deeper into building and training my own ML models, to really understand what’s happening under the hood rather than just using existing tools.
+
+...
+Do you have experience with customer-facing roles ?
+In my second job, working with big infrastructure, I was in L3 support, and we had a ticketing system where we handled tickets from branches (internal customers) about their infrastructure issues — from simple solutions like starting an app, to complex months-long work with many calls, meetings, and on-site visits, where we needed to build a new automation specific to that customer.
+
+...
+Outline your software documentation experience.
+In my last three jobs, documentation became one of my priorities. We generally used open source wikis like Docmost, Outline, and MediaWiki. I installed the tools, convinced management about it, and pushed my teammates and other teams to document KB-style articles, implementation references, history of operations, and cheat sheets for some tools. And from experience, I found out that documenting your work helps you more than it helps your teammates — our daily job involves many technologies, and it changes from environment to environment, so remembering what you did on each one is impossible. When you read a wiki page about that environment (either one you wrote or a teammate wrote), you understand the importance of documentation.
 
 Education
 
 We consider academic results in high school and university for all roles, regardless of seniority or department. To enjoy a long and varied career at Canonical, one would need to tackle problems that cannot be defined today! From engineering to marketing to operations and sales, we intensely value colleagues who are able to puzzle through difficult problems and find the optimal path forward. 
 
 How did you rank in your high school, in your final year in maths and hard sciences? Which was your strongest?
+I always ranked among the top 3 in science subjects (math, physics, and life & earth sciences), generally first in math and physics. I ranked 5th in the school overall.
+...
 How did you rank in your high school, in your final year in languages and the arts? Which was your strongest?
+We didn’t have Arts as a school subject, but I ranked 5th in class in languages (Arabic, French, English).
+...
 Please state your high school graduation results or university entrance results, along with the system used, and how to understand those. For example, in the US, you might give your SAT or ACT scores. In Germany, you might give your scores 1-5.
+The Moroccan education system grades on a scale of 0 to 20, where 10/20 is the minimum passing grade, and anything above 16/20 is considered excellent (roughly comparable to top-tier honors in other systems). I graduated high school with 15/20 on the Baccalauréat, the national exam required to complete secondary education and gain university entrance. I then scored 16/20 in University.
+...
 What sort of high school student were you? Outside of class, what were your interests and hobbies?  What would your high school peers remember you for, if we asked them?
-Which university and degree did you choose? What other universities did you consider, and why did you select that one?
-At university, did you do particularly well at any area of your degree?
-Overall, what was your degree result and how did that reflect on your ability?
-In high school and university, what did you achieve that was exceptional?
-What leadership roles did you take on during your education?
+If you asked one of my old friends who studied with me in high school and college, he would say we only had 3 things in life: study, video games, and football — and he would say I was one of the best, if not the best, at all of them.
 
+We played football twice a week, competing against other schools — I was on the team that represented my school. Video games were just our way to chill and forget all the stress of life.
+
+...
+Which university and degree did you choose? What other universities did you consider, and why did you select that one?
+After high school, I was torn between architecture and computer science — architecture at ENA (the only public architecture university), or computer science at ENSA Berrechid (one of the best-known universities in Morocco in technology fields). I chose computer science because of my brother, who had been in the field for 6 years before me, and I made a great choice, as I was getting great free advice from someone who, for sure, wanted the best for me.
+...
+At university, did you do particularly well at any area of your degree?
+In C programming, I was way ahead of my colleagues because I had studied it all summer (I chose to learn C because of what I found on forums at the time, saying it’s the best starting point for understanding computer science). I even had a chat with my teacher to show him where I was, and he told me I had already gotten into the fifth semester.
+...
+Overall, what was your degree result and how did that reflect on your ability?
+My degree result was 16/20. I wasn’t focused on being top of the class — I was working while studying, so my priority was really learning and passing. 16/20 while balancing a job taught me how to handle real responsibility and pressure early on, not just perform well in a purely academic setting.
+
+...
+In high school and university, what did you achieve that was exceptional?
+In a high school math competition, I didn’t get the best grade, but I was the only one in the competition to answer a very hard math problem. When the professor was giving the results, he congratulated me specifically for this achievement, even though I wasn’t close to the top scores.
+...
+What leadership roles did you take on during your education?
+In university, I was class president for one year. My responsibility was gathering all the pain points of my classmates — like not enough time to prepare for exams, or a teacher not coming to class many times — and bringing them to the university’s board of directors.
 
 Context
 
 Outline your thoughts on the mission of Canonical. What is it about the company's purpose and goals which is most appealing to you? What do you see as risky or unappealing?
+I was always a fan of keeping software and information free for everyone, and I can see that Canonical shares that vision. The Linux kernel is the best example of how keeping a product open can actually accelerate its improvement — [add your “why,” e.g., anything from your own hands-on experience with open-source tools].
+
+What I see as a real challenge rather than something unappealing is that Red Hat has dominated the enterprise space despite being a paid product — largely through deep enterprise support, certifications, and trust built over decades in regulated industries. That shows there’s real opportunity for Canonical to grow further into enterprise, but it also means the work isn’t done — which is part of why a role like this one, focused on deepening enterprise adoption, feels meaningful to me.
+...
+
 Who are Canonical's key competitors, and how should Canonical set about winning?
+
+
+Red Hat in first place, and from experience I see many products show installation instructions for RHEL and not for Ubuntu — many other enterprise products have RPM packages and not DPKG. So, from my point of view, to convince an enterprise to use Ubuntu, you need to go around and show that other products work well, and maybe are more stable or much easier to set up on Ubuntu.
+
+Windows desktop is also a big competitor in the endpoint space, but I’ve seen in the last few years that Ubuntu is getting a bigger fanbase, so Canonical is doing a good job on that side
+...
 Why do you most want to work for Canonical?
+Honestly, two main reasons. Canonical is one of the biggest technology leaders in OS. I’ve worked with Ubuntu many times on servers and endpoints, and getting the chance to put a brick in this great wall is an honor — to help enterprises adopt this OS in their environment and spread this beautiful technology to the world.
+
+Secondly, I was always hoping to find a remote job to get the best work-life balance possible, and I see Canonical has this philosophy built in.
+...
 What would you most want to change about Canonical?
+I could say nothing, but if I had to choose one thing, it would be the support of many products on Ubuntu. I know it’s a long journey to get all products to move from Windows or Red Hat to Ubuntu, but I hope it will focus more on endpoint apps, as I see a shift of end users moving from Mac and Windows to Ubuntu nowadays, looking for more freedom and security. So I hope Canonical benefits from this change and keeps its promise to always provide a beautiful, secure, stable, free OS.
+...
 What gets you most excited about this role?
+Getting into a big machine like Canonical and being part of it is exciting, and I know for sure I would see a new world here — before, I always worked with end clients (like banks) and service companies, but never worked with a provider of products with this kind of massive client base (the whole world).
