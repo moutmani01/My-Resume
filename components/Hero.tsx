@@ -46,6 +46,13 @@ export function Hero() {
             >
               {profile.linkedinLabel}
             </a>
+            <a
+              href="/resume.pdf"
+              download
+              className="rounded border border-base-border px-5 py-2.5 font-mono text-xs uppercase tracking-wider text-ink transition-colors hover:border-signal-blue hover:text-signal-blue"
+            >
+              Download Resume
+            </a>
           </div>
         </div>
       </div>
