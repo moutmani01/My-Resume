@@ -2,9 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  // Emits a minimal standalone server (.next/standalone) so the Docker
-  // runtime image only needs the built output, not the full node_modules tree.
-  output: "standalone",
+  // Static export (./out) by default, for Cloudflare Pages. Set
+  // BUILD_STANDALONE=1 to emit a standalone Node server (.next/standalone)
+  // instead, for the Docker self-hosted deployment path.
+  output: process.env.BUILD_STANDALONE === "1" ? "standalone" : "export",
   eslint: {
     dirs: ["app", "components", "content", "lib"],
   },

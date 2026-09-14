@@ -11,10 +11,8 @@ FROM node:20-alpine AS base
 FROM base AS deps
 WORKDIR /app
 
-# No package-lock.json is committed in this repo, so `npm ci` (which
-# requires a lockfile) isn't usable here — fall back to `npm install`.
-COPY package.json ./
-RUN npm install
+COPY package.json package-lock.json ./
+RUN npm ci
 
 # ---- Build stage --------------------------------------------------------
 # Compiles the Next.js app using the dependencies installed above.
@@ -26,6 +24,9 @@ COPY . .
 # Disable Next.js telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# BUILD_STANDALONE switches next.config.mjs from the default static export
+# (used for the Cloudflare Pages deploy) to a standalone Node server.
+ENV BUILD_STANDALONE=1
 RUN npm run build
 
 # ---- Runtime stage --------------------------------------------------------

@@ -29,5 +29,8 @@ jobs:
       - name: Format check
         run: npm run format:check
 
-      - name: Build
+      - name: Build (static export)
         run: npm run build
+
+      - name: Verify Cloudflare Pages output
+        run: test -f out/index.html && test -f out/about.html
