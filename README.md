@@ -61,25 +61,26 @@ routine content updates.
 
 ## Deployment
 
-The default build (`npm run build`) produces a static export in `out/`, deployed to
-**Cloudflare Pages** via `.github/workflows/deploy.yml`: on every push to `main`,
-GitHub Actions builds the static export and runs `wrangler pages deploy` using
-`cloudflare/wrangler-action`. This needs two repository secrets (Settings → Secrets
-and variables → Actions):
+The default build (`npm run build`) produces a static export in `out/`, deployed as
+**Cloudflare Workers static assets** (see `wrangler.toml`'s `[assets]` block) via
+`.github/workflows/deploy.yml`: on every push to `main`, GitHub Actions builds the
+static export and runs `wrangler deploy`. This needs two repository secrets
+(Settings → Secrets and variables → Actions → **Secrets** tab, not an environment
+and not the Variables tab):
 
-- `CLOUDFLARE_API_TOKEN` — a token with **Account → Cloudflare Pages → Edit**
-  permission
+- `CLOUDFLARE_API_TOKEN` — needs Workers deploy permission
 - `CLOUDFLARE_ACCOUNT_ID` — from the Cloudflare dashboard's account overview
 
-Cloudflare's own Git-integration build for this project consistently failed with a
-Pages API authentication error, even after setting a correctly-scoped
-`CLOUDFLARE_API_TOKEN` as a build environment variable — its build pipeline doesn't
-appear to pass that variable through to the deploy step. GitHub Actions' own secrets
-store doesn't have that problem, so it does the deploy instead. If you still have
-Cloudflare's own Git integration connected to this repo, either disconnect it or
+This started out as an attempt to use Cloudflare Pages, both through Cloudflare's own
+Git-integration build and through `wrangler pages deploy` in GitHub Actions — both
+failed, the second one with `wrangler` itself confirming _"The Pages project ...
+does not exist. Maybe you intended to deploy a Worker project instead?"_ once auth was
+actually working. The Cloudflare dashboard project behind this repo is a **Workers**
+project, so `wrangler deploy` (not `wrangler pages deploy`) is correct. If you still
+have Cloudflare's own Git integration connected to this repo, either disconnect it or
 ignore its (failing) build check — it isn't what ships the site.
 
-- **Manual/CLI:** `npm run deploy` (runs `wrangler pages deploy out`, using your own
+- **Manual/CLI:** `npm run deploy` (runs `wrangler deploy`, using your own
   `wrangler login` session or `CLOUDFLARE_API_TOKEN`).
 
 `.github/workflows/ci.yml` only validates the build (lint, type check, format check,

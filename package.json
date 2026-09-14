@@ -10,7 +10,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "tsc --noEmit",
-    "deploy": "wrangler pages deploy out --project-name=outmani-mahfoud"
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "next": "14.2.5",
