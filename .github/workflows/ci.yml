@@ -32,5 +32,8 @@ jobs:
       - name: Build (static export)
         run: npm run build
 
-      - name: Verify Cloudflare Pages output
+      - name: Verify Cloudflare Workers assets output
         run: test -f out/index.html && test -f out/about.html
+
+      - name: Validate Cloudflare config and assets
+        run: npx wrangler deploy --dry-run

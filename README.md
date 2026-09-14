@@ -62,18 +62,23 @@ routine content updates.
 ## Deployment
 
 The default build (`npm run build`) produces a static export in `out/`, deployed to
-**Cloudflare Pages**:
+**Cloudflare Workers** as static assets (see `wrangler.toml`'s `[assets]` block) —
+the same platform and Workers Builds pipeline as the
+[MyDebt](https://github.com/moutmani01/MyDebt) project:
 
-- **Git integration (recommended):** connect this repo in the Cloudflare dashboard
-  under Workers & Pages → Create → Pages → Connect to Git. Build command
-  `npm run build`, build output directory `out`. Every push to `main` deploys
-  automatically; PRs get preview deployments.
-- **Manual/CLI:** `npm run deploy` (runs `wrangler pages deploy out`).
+- **Git integration (recommended):** in the Cloudflare dashboard, Workers & Pages →
+  Create → Import a repository. Build command `npm run build`; leave the deploy
+  command as its default (`npm run deploy`, i.e. `wrangler deploy`) so it uses the
+  Workers-scoped token Cloudflare injects into the build — a `wrangler pages deploy`
+  command in that slot fails with an authentication error, since that token isn't
+  scoped for the Pages API. Every push to `main` deploys automatically; PRs get
+  preview deployments.
+- **Manual/CLI:** `npm run deploy` (runs `wrangler deploy`, using your own
+  `wrangler login` session or `CLOUDFLARE_API_TOKEN`).
 
 GitHub Actions (`.github/workflows/ci.yml`) only validates the build (lint, type
 check, format check, static export) — it does not deploy; that's handled by
-Cloudflare's own Git integration above, same as the
-[MyDebt](https://github.com/moutmani01/MyDebt) project.
+Cloudflare's Workers Builds above.
 
 For a self-hosted Node server instead, set `BUILD_STANDALONE=1` before `next build`
 to emit `.next/standalone` (see `Dockerfile`).
