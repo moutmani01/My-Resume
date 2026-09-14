@@ -25,5 +25,5 @@ export const siteMeta = {
   title: "Outmani Mahfoud — Enterprise AI, Cloud & DevSecOps Architect",
   description:
     "Portfolio of Outmani Mahfoud: 10+ years architecting AI/GenAI, cloud, and DevSecOps platforms for banking and enterprise. Experience, certifications, projects, and milestones.",
-  url: "https://outmani-mahfoud.dev",
+  url: "https://moutmani.mahfoudoutmani0.workers.dev",
 } as const;
