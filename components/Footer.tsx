@@ -40,6 +40,24 @@ export function Footer() {
           <span>{profile.location}</span>
         </div>
 
+        <div className="mt-8 rounded-md border border-base-border bg-base-surface p-4">
+          <p className="eyebrow mb-3">B2B Engagement</p>
+          <div className="flex flex-wrap gap-2">
+            {profile.businessEntities.map((entity) => (
+              <span
+                key={entity.label}
+                className="rounded-full border border-base-border px-3 py-1 font-mono text-[11px] text-ink-muted"
+              >
+                {entity.region} — {entity.label}
+              </span>
+            ))}
+          </div>
+          <p className="mt-3 text-xs text-ink-faint">
+            Available for B2B contracting through any of the entities above — ask about
+            the setup that works best for your procurement process.
+          </p>
+        </div>
+
         <p className="mt-16 font-mono text-[10px] uppercase tracking-wider text-ink-faint">
           © {new Date().getFullYear()} {profile.name}. Built with Next.js & Tailwind CSS.
         </p>

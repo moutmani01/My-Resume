@@ -3,7 +3,7 @@ import { profile } from "@/content/profile";
 const metrics = [
   { label: "STATUS", value: "AVAILABLE FOR OPPORTUNITIES", tone: "green" as const },
   { label: "UPTIME", value: `${profile.yearsExperience}+ YRS` },
-  { label: "REGION", value: "FR / MA" },
+  { label: "REGION", value: "MA / WORLDWIDE" },
   { label: "STACK", value: "AZURE · AWS · K8S" },
 ];
 

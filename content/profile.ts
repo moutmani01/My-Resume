@@ -12,7 +12,13 @@ export const profile = {
   linkedinLabel: "linkedin.com/in/mahfoud-outmani",
   github: "https://github.com/moutmani01",
   githubLabel: "github.com/moutmani01",
+  credly: "https://www.credly.com/users/mahfoud-outmani",
   yearsExperience: 10,
+  businessEntities: [
+    { region: "United States", label: "US LLC" },
+    { region: "Spain", label: "Spanish Company" },
+    { region: "Morocco", label: "Moroccan Company" },
+  ],
   focusAreas: [
     "Cloud-Native Architecture",
     "Kubernetes & OpenShift",
