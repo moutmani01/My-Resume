@@ -10,6 +10,8 @@ export const profile = {
   phones: ["+33 759 575 663", "+212 662 828 465"],
   linkedin: "https://linkedin.com/in/mahfoud-outmani",
   linkedinLabel: "linkedin.com/in/mahfoud-outmani",
+  github: "https://github.com/moutmani01",
+  githubLabel: "github.com/moutmani01",
   yearsExperience: 10,
   focusAreas: [
     "Cloud-Native Architecture",
