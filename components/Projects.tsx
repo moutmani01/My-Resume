@@ -31,7 +31,10 @@ export function Projects() {
               </p>
               <ul className="space-y-1.5">
                 {p.approach.map((a) => (
-                  <li key={a} className="flex gap-2 text-sm leading-relaxed text-ink-muted">
+                  <li
+                    key={a}
+                    className="flex gap-2 text-sm leading-relaxed text-ink-muted"
+                  >
                     <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-signal-green" />
                     {a}
                   </li>
@@ -42,7 +45,9 @@ export function Projects() {
             <div className="mb-4 mt-auto grid grid-cols-2 gap-3 border-t border-base-border pt-4 sm:grid-cols-3">
               {p.metrics.map((m) => (
                 <div key={m.label}>
-                  <p className="font-display text-xl font-medium text-signal-green">{m.value}</p>
+                  <p className="font-display text-xl font-medium text-signal-green">
+                    {m.value}
+                  </p>
                   <p className="text-[11px] leading-tight text-ink-faint">{m.label}</p>
                 </div>
               ))}

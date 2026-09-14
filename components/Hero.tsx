@@ -34,7 +34,7 @@ export function Hero() {
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
               href="#experience"
-              className="rounded bg-signal-green px-5 py-2.5 font-mono text-xs font-medium uppercase tracking-wider text-base transition-opacity hover:opacity-90"
+              className="rounded bg-signal-green px-5 py-2.5 font-mono text-base text-xs font-medium uppercase tracking-wider transition-opacity hover:opacity-90"
             >
               View Experience
             </a>

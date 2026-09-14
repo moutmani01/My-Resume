@@ -28,7 +28,9 @@ export function Milestones() {
               key={m.id}
               className="flex flex-col gap-2 border-b border-base-border/70 py-3 sm:flex-row sm:items-baseline sm:gap-6"
             >
-              <span className="w-24 shrink-0 font-mono text-xs text-ink-faint">{m.date}</span>
+              <span className="w-24 shrink-0 font-mono text-xs text-ink-faint">
+                {m.date}
+              </span>
               <span
                 className={cx(
                   "w-fit shrink-0 rounded border px-2 py-0.5 font-mono text-[10px] tracking-wider",

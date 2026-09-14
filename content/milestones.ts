@@ -14,7 +14,8 @@ export const milestones: Milestone[] = [
     sortKey: 2016.2,
     type: "role",
     title: "Started career as Junior IT Consultant",
-    detail: "Training Consulting Services — virtualization deployments for major industrial clients.",
+    detail:
+      "Training Consulting Services — virtualization deployments for major industrial clients.",
   },
   {
     id: "m-dut",
@@ -54,7 +55,8 @@ export const milestones: Milestone[] = [
     sortKey: 2021.3,
     type: "role",
     title: "Promoted to System & Security Expert",
-    detail: "Crédit Du Maroc Bank — led security posture hardening and DevSecOps automation.",
+    detail:
+      "Crédit Du Maroc Bank — led security posture hardening and DevSecOps automation.",
   },
   {
     id: "m-30pct",
@@ -62,7 +64,8 @@ export const milestones: Milestone[] = [
     sortKey: 2023,
     type: "achievement",
     title: "Cut identified threat parameters by 30%",
-    detail: "Through strategic vulnerability management and precision penetration testing.",
+    detail:
+      "Through strategic vulnerability management and precision penetration testing.",
   },
   {
     id: "m-80pct",
@@ -78,14 +81,16 @@ export const milestones: Milestone[] = [
     sortKey: 2024,
     type: "certification",
     title: "Earned 7 professional certifications",
-    detail: "Including Azure Solutions Architect Expert, DevOps Engineer Expert, and LPIC-3.",
+    detail:
+      "Including Azure Solutions Architect Expert, DevOps Engineer Expert, and LPIC-3.",
   },
   {
     id: "m-phd",
     date: "2025",
     sortKey: 2025.5,
     type: "education",
-    title: "Doctor of Philosophy (PhD), Computing & Information Technologies and Engineering",
+    title:
+      "Doctor of Philosophy (PhD), Computing & Information Technologies and Engineering",
     detail:
       "Madison International Institute & Business School, USA — research on multi-cloud and hybrid-cloud architectures, disaster recovery, and near-zero-downtime systems.",
   },
@@ -95,6 +100,7 @@ export const milestones: Milestone[] = [
     sortKey: 2026.1,
     type: "role",
     title: "Became AI & Infrastructure Expert at Saham Bank",
-    detail: "Leading production GenAI orchestration on NVIDIA Operator, AI Foundry, and Bedrock.",
+    detail:
+      "Leading production GenAI orchestration on NVIDIA Operator, AI Foundry, and Bedrock.",
   },
 ];

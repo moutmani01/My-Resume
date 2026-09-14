@@ -30,9 +30,7 @@ export default async function AboutPage() {
         <h1 className="mb-10 font-display text-3xl font-medium text-ink md:text-4xl">
           About {profile.name}
         </h1>
-        <article
-          className="prose-invert max-w-2xl space-y-5 text-sm leading-relaxed text-ink-muted [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:font-display [&_h2]:text-lg [&_h2]:font-medium [&_h2]:text-ink [&_strong]:text-ink"
-        >
+        <article className="prose-invert max-w-2xl space-y-5 text-sm leading-relaxed text-ink-muted [&_h2]:mb-3 [&_h2]:mt-10 [&_h2]:font-display [&_h2]:text-lg [&_h2]:font-medium [&_h2]:text-ink [&_strong]:text-ink">
           <MDXRemote source={source} />
         </article>
       </main>

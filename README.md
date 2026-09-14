@@ -34,15 +34,15 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Scripts
 
-| Command                | Purpose                                   |
-| ----------------------- | ------------------------------------------ |
-| `npm run dev`           | Local development server                  |
-| `npm run build`         | Production build (validates the whole app) |
-| `npm start`              | Serve the production build                |
-| `npm run lint`           | ESLint                                     |
-| `npm run typecheck`      | TypeScript strict type checking            |
-| `npm run format`         | Prettier — write                           |
-| `npm run format:check`   | Prettier — check only                      |
+| Command                | Purpose                                    |
+| ---------------------- | ------------------------------------------ |
+| `npm run dev`          | Local development server                   |
+| `npm run build`        | Production build (validates the whole app) |
+| `npm start`            | Serve the production build                 |
+| `npm run lint`         | ESLint                                     |
+| `npm run typecheck`    | TypeScript strict type checking            |
+| `npm run format`       | Prettier — write                           |
+| `npm run format:check` | Prettier — check only                      |
 
 ## Editing content
 

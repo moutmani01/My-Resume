@@ -28,7 +28,9 @@ export function ExperienceTimeline() {
               </span>
             </div>
             <p className="mb-4 font-mono text-xs text-ink-faint">{role.location}</p>
-            <p className="mb-5 max-w-2xl text-sm leading-relaxed text-ink-muted">{role.summary}</p>
+            <p className="mb-5 max-w-2xl text-sm leading-relaxed text-ink-muted">
+              {role.summary}
+            </p>
 
             <div className="grid gap-4 md:grid-cols-2">
               {role.highlights.map((h) => (

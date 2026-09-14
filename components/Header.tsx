@@ -45,7 +45,13 @@ export function Header() {
             className="rounded border border-base-border p-2 text-ink md:hidden"
           >
             <span className="sr-only">Toggle navigation menu</span>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              aria-hidden="true"
+            >
               {menuOpen ? (
                 <path
                   d="M4 4L14 14M14 4L4 14"

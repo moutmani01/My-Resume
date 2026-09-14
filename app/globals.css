@@ -12,7 +12,7 @@
   }
 
   body {
-    @apply bg-base text-ink font-body antialiased;
+    @apply bg-base font-body text-ink antialiased;
   }
 
   ::selection {
@@ -50,6 +50,6 @@
 
   .node-dot::after {
     content: "";
-    @apply absolute inset-0 rounded-full bg-signal-green/60 animate-blink;
+    @apply absolute inset-0 animate-blink rounded-full bg-signal-green/60;
   }
 }

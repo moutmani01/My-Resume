@@ -133,7 +133,14 @@ export const experience: ExperienceEntry[] = [
           "Led large-scale cross-functional migrations using Red Hat Satellite for centralized enterprise fleet configuration management, improving scalability and configuration velocity.",
       },
     ],
-    stack: ["IBM AIX", "Power Systems", "RHEL", "OpenShift", "OpenStack", "Red Hat Satellite"],
+    stack: [
+      "IBM AIX",
+      "Power Systems",
+      "RHEL",
+      "OpenShift",
+      "OpenStack",
+      "Red Hat Satellite",
+    ],
   },
   {
     id: "ymagis",
@@ -181,6 +188,13 @@ export const experience: ExperienceEntry[] = [
           "Managed modernizations to Microsoft Exchange 2013, Office 365, and multi-tier Windows Server clusters to unify corporate communication.",
       },
     ],
-    stack: ["vSphere", "vCenter", "vSAN", "Exchange 2013", "Office 365", "Windows Server"],
+    stack: [
+      "vSphere",
+      "vCenter",
+      "vSAN",
+      "Exchange 2013",
+      "Office 365",
+      "Windows Server",
+    ],
   },
 ];

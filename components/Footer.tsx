@@ -11,7 +11,7 @@ export function Footer() {
         <div className="mt-8 flex flex-wrap gap-4">
           <a
             href={`mailto:${profile.email}`}
-            className="rounded bg-signal-green px-5 py-2.5 font-mono text-xs font-medium uppercase tracking-wider text-base transition-opacity hover:opacity-90"
+            className="rounded bg-signal-green px-5 py-2.5 font-mono text-base text-xs font-medium uppercase tracking-wider transition-opacity hover:opacity-90"
           >
             {profile.email}
           </a>

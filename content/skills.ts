@@ -6,7 +6,12 @@ export type SkillGroup = {
 export const skillGroups: SkillGroup[] = [
   {
     category: "AI Ops",
-    items: ["NVIDIA Operator", "Amazon Bedrock", "Microsoft AI Foundry", "Autonomous Agents"],
+    items: [
+      "NVIDIA Operator",
+      "Amazon Bedrock",
+      "Microsoft AI Foundry",
+      "Autonomous Agents",
+    ],
   },
   {
     category: "Cloud Infrastructure",
@@ -14,7 +19,17 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     category: "DevSecOps & Automation",
-    items: ["ArgoCD", "GitOps", "Jenkins", "GitLab CI/CD", "Ansible", "Puppet", "Docker", "Harbor", "Trivy"],
+    items: [
+      "ArgoCD",
+      "GitOps",
+      "Jenkins",
+      "GitLab CI/CD",
+      "Ansible",
+      "Puppet",
+      "Docker",
+      "Harbor",
+      "Trivy",
+    ],
   },
   {
     category: "Kubernetes & Platforms",
@@ -22,7 +37,14 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     category: "Observability",
-    items: ["Grafana Stack", "ELK Stack", "Dynatrace", "Nagios", "Prometheus", "Centreon"],
+    items: [
+      "Grafana Stack",
+      "ELK Stack",
+      "Dynatrace",
+      "Nagios",
+      "Prometheus",
+      "Centreon",
+    ],
   },
   {
     category: "Security Engineering",
