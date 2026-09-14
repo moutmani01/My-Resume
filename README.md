@@ -62,21 +62,28 @@ routine content updates.
 ## Deployment
 
 The default build (`npm run build`) produces a static export in `out/`, deployed to
-**Cloudflare Pages**:
+**Cloudflare Pages** via `.github/workflows/deploy.yml`: on every push to `main`,
+GitHub Actions builds the static export and runs `wrangler pages deploy` using
+`cloudflare/wrangler-action`. This needs two repository secrets (Settings → Secrets
+and variables → Actions):
 
-- **Git integration (recommended):** in the Cloudflare dashboard, Workers & Pages →
-  Create → Import a repository (not a template/quickstart, which seeds a copy of
-  the repo instead of tracking it). Build command `npm run build`, build output
-  directory `out`, and leave the **Deploy command field blank** — Cloudflare
-  publishes a Pages project's build output automatically; a custom `wrangler`
-  invocation in that slot fights the platform's own publish step. Every push to
-  `main` deploys automatically; PRs get preview deployments.
+- `CLOUDFLARE_API_TOKEN` — a token with **Account → Cloudflare Pages → Edit**
+  permission
+- `CLOUDFLARE_ACCOUNT_ID` — from the Cloudflare dashboard's account overview
+
+Cloudflare's own Git-integration build for this project consistently failed with a
+Pages API authentication error, even after setting a correctly-scoped
+`CLOUDFLARE_API_TOKEN` as a build environment variable — its build pipeline doesn't
+appear to pass that variable through to the deploy step. GitHub Actions' own secrets
+store doesn't have that problem, so it does the deploy instead. If you still have
+Cloudflare's own Git integration connected to this repo, either disconnect it or
+ignore its (failing) build check — it isn't what ships the site.
+
 - **Manual/CLI:** `npm run deploy` (runs `wrangler pages deploy out`, using your own
   `wrangler login` session or `CLOUDFLARE_API_TOKEN`).
 
-GitHub Actions (`.github/workflows/ci.yml`) only validates the build (lint, type
-check, format check, static export) — it does not deploy; that's handled by
-Cloudflare's Pages Git integration above.
+`.github/workflows/ci.yml` only validates the build (lint, type check, format check,
+static export) on pushes and PRs; `deploy.yml` is the one that actually publishes.
 
 For a self-hosted Node server instead, set `BUILD_STANDALONE=1` before `next build`
 to emit `.next/standalone` (see `Dockerfile`).
