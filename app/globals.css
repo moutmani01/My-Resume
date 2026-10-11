@@ -357,6 +357,47 @@
     background: linear-gradient(to top, rgba(10, 14, 19, 0.55), transparent 45%);
   }
 
+  /* Employer logos keep their own colours on a light plate */
+  .logo-plate {
+    @apply flex h-14 w-36 shrink-0 items-center justify-center rounded-lg bg-ink px-4 py-2.5;
+  }
+
+  .logo-plate img {
+    @apply h-full w-full object-contain;
+  }
+
+  /* Project architecture diagrams (see Architecture.tsx) */
+  .arch {
+    @apply self-start rounded-lg border border-line bg-canvas/70 p-5;
+  }
+
+  .arch-layer {
+    @apply rounded-md border border-line bg-surface p-3;
+  }
+
+  .arch-node {
+    @apply rounded border border-line bg-raised px-2.5 py-1 text-sm text-ink;
+  }
+
+  .arch-link {
+    @apply relative mx-auto block h-7 w-px bg-line;
+  }
+
+  .arch-link::after {
+    content: "";
+    @apply absolute -bottom-px left-1/2 h-1.5 w-1.5 border-b border-r border-ink-faint;
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  .arch-pulse {
+    @apply absolute -left-px top-0 h-2 w-[3px] rounded-full bg-signal-green opacity-0;
+  }
+
+  [data-inview="true"] .arch-pulse {
+    animation: flow-down 2.6s linear infinite;
+    animation-delay: calc(var(--i, 0) * 420ms);
+  }
+
   /* Scroll reveals (see InView.tsx). Content stays visible without JS. */
   [data-reveal] {
     transition:
@@ -423,6 +464,25 @@
 @keyframes marquee {
   to {
     transform: translateX(-100%);
+  }
+}
+
+@keyframes flow-down {
+  0% {
+    transform: translateY(-4px);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  30% {
+    transform: translateY(22px);
+    opacity: 1;
+  }
+  38%,
+  100% {
+    transform: translateY(22px);
+    opacity: 0;
   }
 }
 

@@ -3,6 +3,11 @@ export type ProjectMetric = {
   label: string;
 };
 
+export type ArchLayer = {
+  label: string;
+  nodes: string[];
+};
+
 export type Project = {
   id: string;
   name: string;
@@ -13,6 +18,8 @@ export type Project = {
   approach: string[];
   metrics: ProjectMetric[];
   stack: string[];
+  /** High-level flow, top to bottom. */
+  architecture: ArchLayer[];
 };
 
 export const projects: Project[] = [
@@ -35,6 +42,18 @@ export const projects: Project[] = [
       { value: "GPU", label: "Accelerated container execution" },
     ],
     stack: ["NVIDIA Operator", "Azure AI Foundry", "Amazon Bedrock", "Kubernetes", "AKS"],
+    architecture: [
+      {
+        label: "Consumers",
+        nodes: ["Enterprise GenAI workflows", "Autonomous AI agents"],
+      },
+      { label: "Orchestration", nodes: ["Microsoft AI Foundry", "Amazon Bedrock"] },
+      {
+        label: "Execution",
+        nodes: ["Kubernetes (AKS)", "NVIDIA Operator", "GPU-accelerated containers"],
+      },
+      { label: "Wrapped in", nodes: ["DevSecOps pipeline", "Observability fabric"] },
+    ],
   },
   {
     id: "devsecops-pipeline",
@@ -66,6 +85,16 @@ export const projects: Project[] = [
       "SIEM",
       "PKI",
     ],
+    architecture: [
+      { label: "Source", nodes: ["GitLab"] },
+      { label: "Build", nodes: ["Jenkins", "Docker"] },
+      {
+        label: "Security gates",
+        nodes: ["Trivy", "Dependency-Track", "Dependency-Check"],
+      },
+      { label: "Registries", nodes: ["Nexus", "Harbor"] },
+      { label: "Deploy", nodes: ["Ansible", "Kubernetes"] },
+    ],
   },
   {
     id: "observability-fabric",
@@ -86,6 +115,12 @@ export const projects: Project[] = [
       { value: "24/7", label: "Proactive alerting coverage" },
     ],
     stack: ["Grafana", "ELK Stack", "Dynatrace", "Nagios", "Prometheus", "Centreon"],
+    architecture: [
+      { label: "Sources", nodes: ["Windows", "Linux", "AIX", "Virtualized estates"] },
+      { label: "Monitoring", nodes: ["Nagios", "Centreon", "Prometheus"] },
+      { label: "Logs & APM", nodes: ["ELK stack", "Dynatrace"] },
+      { label: "Dashboards & alerting", nodes: ["Grafana", "24/7 proactive alerts"] },
+    ],
   },
   {
     id: "weather-supercomputer",
@@ -112,6 +147,12 @@ export const projects: Project[] = [
       "InfiniBand",
       "IBM Spectrum Scale",
       "IBM Spectrum Archive",
+    ],
+    architecture: [
+      { label: "Automation & lifecycle", nodes: ["Ansible", "Red Hat Satellite"] },
+      { label: "Compute", nodes: ["128 RHEL servers"] },
+      { label: "Interconnect", nodes: ["InfiniBand network"] },
+      { label: "Storage", nodes: ["IBM Spectrum Scale", "IBM Spectrum Archive"] },
     ],
   },
   {
@@ -140,6 +181,13 @@ export const projects: Project[] = [
       "Windows Server",
       "RHEL",
       "Middleware",
+    ],
+    architecture: [
+      { label: "Request", nodes: ["Application teams", "Self-service"] },
+      { label: "Infrastructure as code", nodes: ["Terraform", "Ansible"] },
+      { label: "Guardrails", nodes: ["Compliance checks", "Security best practices"] },
+      { label: "Platforms", nodes: ["Nutanix", "Azure"] },
+      { label: "Delivered", nodes: ["Windows Server", "RHEL", "Middleware"] },
     ],
   },
 ];

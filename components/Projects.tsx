@@ -2,7 +2,7 @@ import { projects } from "@/content/projects";
 import { SectionHeading } from "./SectionHeading";
 import { InView } from "./InView";
 import { Spotlight } from "./Spotlight";
-import { cx } from "@/lib/utils";
+import { Architecture } from "./Architecture";
 
 export function Projects() {
   return (
@@ -13,35 +13,22 @@ export function Projects() {
         description="Platform-building work chosen for measurable, repeatable outcomes rather than scope alone."
       />
 
-      <InView className="grid gap-5 md:grid-cols-2" rootMargin="0px 0px -8% 0px">
-        {projects.map((p, i) => {
-          const featured = i === 0;
-          return (
-            <Spotlight
-              key={p.id}
-              className={cx("p-6 md:p-8", featured && "md:col-span-2")}
-              style={{ "--i": Math.min(i, 4) } as React.CSSProperties}
-            >
+      <div className="space-y-5">
+        {projects.map((p) => (
+          <InView key={p.id} rootMargin="0px 0px -8% 0px">
+            <Spotlight className="p-6 md:p-8">
               <div
                 data-reveal
-                className={cx(
-                  "relative flex h-full flex-col",
-                  featured && "md:grid md:grid-cols-[1.1fr_0.9fr] md:gap-x-12",
-                )}
+                className="relative grid gap-x-12 gap-y-8 lg:grid-cols-[1.1fr_0.9fr]"
               >
-                <div>
+                <div className="flex flex-col">
                   <div className="flex items-baseline justify-between gap-4">
                     <p className="font-mono text-xs text-signal-blue">{p.org}</p>
                     <span className="whitespace-nowrap font-mono text-[11px] uppercase tracking-wider text-ink-faint">
                       {p.period}
                     </span>
                   </div>
-                  <h3
-                    className={cx(
-                      "mt-3 font-display font-medium tracking-tight text-ink",
-                      featured ? "text-2xl md:text-3xl" : "text-xl md:text-2xl",
-                    )}
-                  >
+                  <h3 className="mt-3 font-display text-2xl font-medium tracking-tight text-ink md:text-3xl">
                     {p.name}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-ink-muted md:text-base">
@@ -61,15 +48,8 @@ export function Projects() {
                       </div>
                     ))}
                   </dl>
-                </div>
 
-                <div
-                  className={cx(
-                    "flex flex-1 flex-col",
-                    featured ? "mt-6 md:mt-0" : "mt-6",
-                  )}
-                >
-                  <p className="mb-3 font-mono text-[11px] uppercase tracking-wider text-ink-faint">
+                  <p className="mb-3 mt-8 font-mono text-[11px] uppercase tracking-wider text-ink-faint">
                     Approach
                   </p>
                   <ul className="space-y-2">
@@ -95,11 +75,13 @@ export function Projects() {
                     ))}
                   </ul>
                 </div>
+
+                <Architecture layers={p.architecture} />
               </div>
             </Spotlight>
-          );
-        })}
-      </InView>
+          </InView>
+        ))}
+      </div>
     </section>
   );
 }

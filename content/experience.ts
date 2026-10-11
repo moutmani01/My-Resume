@@ -11,6 +11,7 @@ export type ExperienceEntry = {
   start: string;
   end: string;
   current: boolean;
+  logo?: { src: string; width: number; height: number };
   summary: string;
   highlights: ExperienceHighlight[];
   stack: string[];
@@ -19,6 +20,7 @@ export type ExperienceEntry = {
 export const experience: ExperienceEntry[] = [
   {
     id: "saham-bank",
+    logo: { src: "/logos/saham-bank.svg", width: 222, height: 65 },
     title: "AI & Infrastructure Expert",
     company: "Saham Bank",
     location: "Casablanca, Morocco",
@@ -74,6 +76,7 @@ export const experience: ExperienceEntry[] = [
   },
   {
     id: "credit-du-maroc",
+    logo: { src: "/logos/credit-du-maroc.svg", width: 1756, height: 1018 },
     title: "System & Security Expert",
     company: "Crédit Du Maroc Bank",
     location: "Casablanca, Morocco",
@@ -113,6 +116,7 @@ export const experience: ExperienceEntry[] = [
   },
   {
     id: "power-maroc",
+    logo: { src: "/logos/power-maroc.png", width: 480, height: 127 },
     title: "IT Solution Expert",
     company: "Power Maroc",
     location: "Casablanca / Rabat, Morocco",
@@ -144,6 +148,7 @@ export const experience: ExperienceEntry[] = [
   },
   {
     id: "ymagis",
+    logo: { src: "/logos/ymagis.png", width: 480, height: 157 },
     title: "IT Engineer",
     company: "Ymagis Group",
     location: "Casablanca, Morocco",
