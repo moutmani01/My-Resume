@@ -49,7 +49,12 @@ export function Projects() {
                     ))}
                   </dl>
 
-                  <p className="mb-3 mt-8 font-mono text-[11px] uppercase tracking-wider text-ink-faint">
+                  <p className="mb-2 mt-8 font-mono text-[11px] uppercase tracking-wider text-ink-faint">
+                    Problem
+                  </p>
+                  <p className="text-sm leading-relaxed text-ink-muted">{p.problem}</p>
+
+                  <p className="mb-3 mt-6 font-mono text-[11px] uppercase tracking-wider text-ink-faint">
                     Approach
                   </p>
                   <ul className="space-y-2">

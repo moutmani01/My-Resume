@@ -44,11 +44,13 @@ export const metadata: Metadata = {
     url: siteMeta.url,
     siteName: profile.name,
     type: "profile",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: siteMeta.title }],
   },
   twitter: {
     card: "summary_large_image",
     title: siteMeta.title,
     description: siteMeta.description,
+    images: ["/og.png"],
   },
   robots: {
     index: true,

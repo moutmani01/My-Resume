@@ -2,6 +2,8 @@ export const profile = {
   name: "Outmani Mahfoud",
   role: "Enterprise AI, Cloud & DevSecOps Architect",
   tagline:
+    "I take enterprise AI and cloud platforms from pilot to production, with security and observability built in.",
+  track:
     "10+ years designing and operating large-scale infrastructure platforms across banking, government, and enterprise environments.",
   summary:
     "Specialized in cloud-native architectures, Kubernetes platforms, AI/GenAI deployment, infrastructure automation, and cybersecurity. Proven track record delivering Azure, AWS, OpenShift, and VMware solutions while leading DevSecOps transformation, observability initiatives, and production AI workloads.",

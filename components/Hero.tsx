@@ -38,15 +38,21 @@ export function Hero() {
             {profile.role}
           </p>
           <p
-            className="hero-line mt-6 max-w-xl text-lg leading-relaxed text-ink-muted md:text-xl"
+            className="hero-line mt-6 max-w-xl text-xl leading-snug text-ink [text-wrap:balance] md:text-2xl"
             style={line(3)}
           >
             {profile.tagline}
           </p>
+          <p
+            className="hero-line mt-4 max-w-xl text-base leading-relaxed text-ink-muted"
+            style={line(4)}
+          >
+            {profile.track}
+          </p>
 
           <div
             className="hero-line mt-9 flex flex-wrap items-center gap-3"
-            style={line(4)}
+            style={line(5)}
           >
             <a href="#contact" className="btn btn-primary">
               Get in touch
@@ -87,7 +93,7 @@ export function Hero() {
             </a>
           </div>
 
-          <ul className="hero-line mt-9 flex max-w-2xl flex-wrap gap-2" style={line(5)}>
+          <ul className="hero-line mt-9 flex max-w-2xl flex-wrap gap-2" style={line(6)}>
             {profile.focusAreas.map((area) => (
               <li
                 key={area}
