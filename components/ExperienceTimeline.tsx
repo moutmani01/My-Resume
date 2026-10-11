@@ -24,24 +24,40 @@ export function ExperienceTimeline() {
               )}
               aria-hidden
             />
-            <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-              <h3 className="font-display text-xl font-medium tracking-tight text-ink md:text-2xl">
-                {role.title}
-              </h3>
-              <span className="font-mono text-xs uppercase tracking-wider text-ink-faint">
-                {role.start} → {role.end}
-              </span>
-            </div>
-            <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
-              <span className="font-medium text-signal-blue">{role.company}</span>
-              <span className="font-mono text-xs text-ink-faint">{role.location}</span>
-              {role.current && (
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-signal-green/40 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-signal-green">
-                  <span className="node-dot h-1.5 w-1.5" aria-hidden />
-                  Current
-                </span>
+            <div className="flex flex-wrap items-start justify-between gap-x-8 gap-y-4">
+              <div>
+                <h3 className="font-display text-xl font-medium tracking-tight text-ink md:text-2xl">
+                  {role.title}
+                </h3>
+                <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+                  <span className="font-medium text-signal-blue">{role.company}</span>
+                  <span className="font-mono text-xs text-ink-faint">
+                    {role.location}
+                  </span>
+                  {role.current && (
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-signal-green/40 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-signal-green">
+                      <span className="node-dot h-1.5 w-1.5" aria-hidden />
+                      Current
+                    </span>
+                  )}
+                </p>
+                <p className="mt-2 font-mono text-xs uppercase tracking-wider text-ink-faint">
+                  {role.start} → {role.end}
+                </p>
+              </div>
+              {role.logo && (
+                <div className="logo-plate">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={role.logo.src}
+                    alt={`${role.company} logo`}
+                    width={role.logo.width}
+                    height={role.logo.height}
+                    loading="lazy"
+                  />
+                </div>
               )}
-            </p>
+            </div>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-muted">
               {role.summary}
             </p>

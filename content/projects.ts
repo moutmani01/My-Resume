@@ -3,6 +3,11 @@ export type ProjectMetric = {
   label: string;
 };
 
+export type ArchLayer = {
+  label: string;
+  nodes: string[];
+};
+
 export type Project = {
   id: string;
   name: string;
@@ -13,6 +18,8 @@ export type Project = {
   approach: string[];
   metrics: ProjectMetric[];
   stack: string[];
+  /** High-level flow, top to bottom. */
+  architecture: ArchLayer[];
 };
 
 export const projects: Project[] = [
@@ -35,6 +42,18 @@ export const projects: Project[] = [
       { value: "GPU", label: "Accelerated container execution" },
     ],
     stack: ["NVIDIA Operator", "Azure AI Foundry", "Amazon Bedrock", "Kubernetes", "AKS"],
+    architecture: [
+      {
+        label: "Consumers",
+        nodes: ["Enterprise GenAI workflows", "Autonomous AI agents"],
+      },
+      { label: "Orchestration", nodes: ["Microsoft AI Foundry", "Amazon Bedrock"] },
+      {
+        label: "Execution",
+        nodes: ["Kubernetes (AKS)", "NVIDIA Operator", "GPU-accelerated containers"],
+      },
+      { label: "Wrapped in", nodes: ["DevSecOps pipeline", "Observability fabric"] },
+    ],
   },
   {
     id: "devsecops-pipeline",
@@ -66,6 +85,16 @@ export const projects: Project[] = [
       "SIEM",
       "PKI",
     ],
+    architecture: [
+      { label: "Source", nodes: ["GitLab"] },
+      { label: "Build", nodes: ["Jenkins", "Docker"] },
+      {
+        label: "Security gates",
+        nodes: ["Trivy", "Dependency-Track", "Dependency-Check"],
+      },
+      { label: "Registries", nodes: ["Nexus", "Harbor"] },
+      { label: "Deploy", nodes: ["Ansible", "Kubernetes"] },
+    ],
   },
   {
     id: "observability-fabric",
@@ -86,52 +115,79 @@ export const projects: Project[] = [
       { value: "24/7", label: "Proactive alerting coverage" },
     ],
     stack: ["Grafana", "ELK Stack", "Dynatrace", "Nagios", "Prometheus", "Centreon"],
+    architecture: [
+      { label: "Sources", nodes: ["Windows", "Linux", "AIX", "Virtualized estates"] },
+      { label: "Monitoring", nodes: ["Nagios", "Centreon", "Prometheus"] },
+      { label: "Logs & APM", nodes: ["ELK stack", "Dynatrace"] },
+      { label: "Dashboards & alerting", nodes: ["Grafana", "24/7 proactive alerts"] },
+    ],
   },
   {
-    id: "multicloud-migration",
-    name: "Multi-Cloud & Hybrid Infrastructure Program",
-    org: "Power Maroc — for Attijari, CIH, BCP, JESA & others",
+    id: "weather-supercomputer",
+    name: "National Weather Service Supercomputer",
+    org: "Power Maroc — for Morocco's national weather service (DMN)",
     period: "2019 – 2021",
     description:
-      "Principal-architect engagement delivering hybrid OpenShift/OpenStack and IBM Power infrastructure for premium corporate and government clients.",
+      "Implementation of the first supercomputer for Morocco's national weather service: 128 RHEL servers on an InfiniBand network, with IBM Spectrum Scale and Spectrum Archive for storage.",
     problem:
-      "Multiple enterprise clients needed modernized, centrally-managed infrastructure spanning mainframe, IBM Power, and open hybrid cloud.",
+      "The weather service needed its first supercomputing platform, built consistently across 128 servers and kept patched and compliant throughout its lifecycle.",
     approach: [
-      "Architected implementations on IBM AIX, Power Systems, IBM Storage Suites, mainframe, RHEL, and hybrid OpenShift/OpenStack.",
-      "Led cross-functional migrations using Red Hat Satellite for centralized fleet configuration management.",
-      "Advised nine major accounts including Royal Air Maroc, WafaSalaf, and DGI on infrastructure strategy.",
+      "Automated the build and configuration of 128 RHEL servers with Ansible.",
+      "Ran lifecycle patching and compliance through Red Hat Satellite.",
+      "Interconnected the cluster over an InfiniBand network, with IBM Spectrum Scale and Spectrum Archive for storage.",
     ],
     metrics: [
-      { value: "9", label: "Enterprise & government accounts advised" },
-      { value: "1", label: "Centralized fleet-management platform" },
+      { value: "128", label: "RHEL servers in the cluster" },
+      { value: "1st", label: "Supercomputer for the weather service" },
     ],
     stack: [
-      "IBM AIX",
-      "Power Systems",
       "RHEL",
-      "OpenShift",
-      "OpenStack",
+      "Ansible",
       "Red Hat Satellite",
+      "InfiniBand",
+      "IBM Spectrum Scale",
+      "IBM Spectrum Archive",
+    ],
+    architecture: [
+      { label: "Automation & lifecycle", nodes: ["Ansible", "Red Hat Satellite"] },
+      { label: "Compute", nodes: ["128 RHEL servers"] },
+      { label: "Interconnect", nodes: ["InfiniBand network"] },
+      { label: "Storage", nodes: ["IBM Spectrum Scale", "IBM Spectrum Archive"] },
     ],
   },
   {
-    id: "global-fleet",
-    name: "Global Multi-Continent Fleet Automation",
-    org: "Ymagis Group",
-    period: "2018 – 2019",
+    id: "self-service-infra",
+    name: "Self-Service Infrastructure Platform",
+    org: "Crédit Du Maroc Bank",
+    period: "2021 – 2025",
     description:
-      "Provisioning and automation framework maintaining high availability across a large, geographically distributed server fleet.",
+      "Modernized application time to market by replacing a 7–15 day infrastructure provisioning process with self-service delivery in seconds, built as infrastructure as code.",
     problem:
-      "A 4,500-server fleet spread across three continents required consistent, high-availability configuration management.",
+      "Application teams waited 7 to 15 days for infrastructure, which slowed every release.",
     approach: [
-      "Maintained system integrity across a high-density hybrid cloud environment.",
-      "Built modular provisioning frameworks with Puppet and Ansible.",
-      "Wrote tailored Python and Bash utilities to remove standard engineering friction points.",
+      "Codified infrastructure with Terraform and Ansible across Nutanix and Azure.",
+      "Delivered Windows Server, RHEL, and middleware through the same self-service flow.",
+      "Built compliance requirements and security best practices into every provisioned environment.",
     ],
     metrics: [
-      { value: "4,500", label: "Production servers maintained" },
-      { value: "3", label: "Continents" },
+      { value: "7–15 days", label: "Previous infrastructure lead time" },
+      { value: "Seconds", label: "Self-service provisioning time" },
     ],
-    stack: ["Puppet", "Ansible", "Python", "Bash"],
+    stack: [
+      "Terraform",
+      "Ansible",
+      "Nutanix",
+      "Azure",
+      "Windows Server",
+      "RHEL",
+      "Middleware",
+    ],
+    architecture: [
+      { label: "Request", nodes: ["Application teams", "Self-service"] },
+      { label: "Infrastructure as code", nodes: ["Terraform", "Ansible"] },
+      { label: "Guardrails", nodes: ["Compliance checks", "Security best practices"] },
+      { label: "Platforms", nodes: ["Nutanix", "Azure"] },
+      { label: "Delivered", nodes: ["Windows Server", "RHEL", "Middleware"] },
+    ],
   },
 ];
