@@ -3,15 +3,18 @@
 /** A .panel whose highlight follows the cursor. Purely decorative. */
 export function Spotlight({
   children,
+  id,
   className,
   style,
 }: {
   children: React.ReactNode;
+  id?: string;
   className?: string;
   style?: React.CSSProperties;
 }) {
   return (
     <article
+      id={id}
       className={`panel ${className ?? ""}`}
       style={style}
       onPointerMove={(e) => {
