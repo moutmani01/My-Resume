@@ -6,6 +6,10 @@ export type ProjectMetric = {
 export type ArchLayer = {
   label: string;
   nodes: string[];
+  /** Optional line of detail under the nodes. */
+  note?: string;
+  /** "up" when this layer supports the one above instead of receiving from it. */
+  flow?: "up";
 };
 
 export type Project = {
@@ -43,16 +47,20 @@ export const projects: Project[] = [
     ],
     stack: ["NVIDIA Operator", "Azure AI Foundry", "Amazon Bedrock", "Kubernetes", "AKS"],
     architecture: [
+      { label: "Users", nodes: ["End-user applications"] },
       {
-        label: "Consumers",
+        label: "Workflows & agents",
         nodes: ["Enterprise GenAI workflows", "Autonomous AI agents"],
       },
-      { label: "Orchestration", nodes: ["Microsoft AI Foundry", "Amazon Bedrock"] },
       {
-        label: "Execution",
-        nodes: ["Kubernetes (AKS)", "NVIDIA Operator", "GPU-accelerated containers"],
+        label: "Hybrid LLM stack",
+        nodes: ["Azure AI Foundry", "Amazon Bedrock", "Kubernetes / NVIDIA GPU"],
       },
-      { label: "Wrapped in", nodes: ["DevSecOps pipeline", "Observability fabric"] },
+      {
+        label: "Wrapped by",
+        nodes: ["DevSecOps pipeline", "LGTM observability stack"],
+        flow: "up",
+      },
     ],
   },
   {
@@ -87,13 +95,13 @@ export const projects: Project[] = [
     ],
     architecture: [
       { label: "Source", nodes: ["GitLab"] },
-      { label: "Build", nodes: ["Jenkins", "Docker"] },
       {
-        label: "Security gates",
-        nodes: ["Trivy", "Dependency-Track", "Dependency-Check"],
+        label: "CI with security gates",
+        nodes: ["Jenkins", "GitLab CI", "Dependency-Track", "Dependency-Check", "Trivy"],
       },
       { label: "Registries", nodes: ["Nexus", "Harbor"] },
-      { label: "Deploy", nodes: ["Ansible", "Kubernetes"] },
+      { label: "Deploy", nodes: ["Ansible"] },
+      { label: "Kubernetes environments", nodes: ["Dev", "PreProd", "Prod"] },
     ],
   },
   {
@@ -116,10 +124,19 @@ export const projects: Project[] = [
     ],
     stack: ["Grafana", "ELK Stack", "Dynatrace", "Nagios", "Prometheus", "Centreon"],
     architecture: [
-      { label: "Sources", nodes: ["Windows", "Linux", "AIX", "Virtualized estates"] },
-      { label: "Monitoring", nodes: ["Nagios", "Centreon", "Prometheus"] },
-      { label: "Logs & APM", nodes: ["ELK stack", "Dynatrace"] },
-      { label: "Dashboards & alerting", nodes: ["Grafana", "24/7 proactive alerts"] },
+      {
+        label: "Sources",
+        nodes: ["Windows", "Linux", "AIX", "Nutanix", "Kubernetes", "Applications"],
+      },
+      {
+        label: "Telemetry platforms",
+        nodes: ["Centreon", "LGTM stack", "ELK", "Dynatrace"],
+      },
+      {
+        label: "Outcome",
+        nodes: ["24/7 alerts", "End-to-end observability & monitoring"],
+        note: "From application to middleware, OS, virtualization, and hardware.",
+      },
     ],
   },
   {
@@ -183,11 +200,14 @@ export const projects: Project[] = [
       "Middleware",
     ],
     architecture: [
-      { label: "Request", nodes: ["Application teams", "Self-service"] },
+      { label: "Request", nodes: ["Self-service portal"] },
       { label: "Infrastructure as code", nodes: ["Terraform", "Ansible"] },
       { label: "Guardrails", nodes: ["Compliance checks", "Security best practices"] },
       { label: "Platforms", nodes: ["Nutanix", "Azure"] },
-      { label: "Delivered", nodes: ["Windows Server", "RHEL", "Middleware"] },
+      {
+        label: "Delivered",
+        nodes: ["Windows Server", "RHEL", "Middleware", "Applications"],
+      },
     ],
   },
 ];
