@@ -6,43 +6,45 @@ export function Skills() {
     <section id="skills" className="container-page py-20 md:py-28">
       <SectionHeading eyebrow="Technical Matrix" title="Core Competencies" />
 
-      <div className="grid gap-6 lg:grid-cols-3">
-        <div className="grid gap-4 sm:grid-cols-2 lg:col-span-2">
-          {skillGroups.map((group) => (
-            <div
-              key={group.category}
-              className="rounded-md border border-base-border p-4"
-            >
-              <p className="mb-3 font-mono text-[11px] uppercase tracking-wider text-signal-green">
-                {group.category}
-              </p>
-              <ul className="space-y-1.5">
+      <dl className="border-t border-line">
+        {skillGroups.map((group) => (
+          <div
+            key={group.category}
+            className="grid gap-x-8 gap-y-3 border-b border-line py-5 md:grid-cols-[15rem_1fr]"
+          >
+            <dt className="font-mono text-xs uppercase leading-7 tracking-wider text-signal-green">
+              {group.category}
+            </dt>
+            <dd>
+              <ul className="flex flex-wrap gap-2">
                 {group.items.map((item) => (
-                  <li key={item} className="text-sm text-ink-muted">
+                  <li
+                    key={item}
+                    className="rounded-md border border-line bg-surface px-3 py-1 text-sm text-ink"
+                  >
                     {item}
                   </li>
                 ))}
               </ul>
-            </div>
-          ))}
+            </dd>
+          </div>
+        ))}
+        <div className="grid gap-x-8 gap-y-3 border-b border-line py-5 md:grid-cols-[15rem_1fr]">
+          <dt className="font-mono text-xs uppercase leading-7 tracking-wider text-signal-blue">
+            Spoken Languages
+          </dt>
+          <dd>
+            <ul className="flex flex-wrap gap-x-10 gap-y-3">
+              {languages.map((l) => (
+                <li key={l.name}>
+                  <p className="text-sm font-medium text-ink">{l.name}</p>
+                  <p className="font-mono text-xs text-ink-faint">{l.level}</p>
+                </li>
+              ))}
+            </ul>
+          </dd>
         </div>
-
-        <div className="rounded-md border border-base-border p-4">
-          <p className="mb-3 font-mono text-[11px] uppercase tracking-wider text-signal-blue">
-            Languages
-          </p>
-          <ul className="space-y-3">
-            {languages.map((l) => (
-              <li key={l.name} className="flex items-baseline justify-between gap-3">
-                <span className="text-sm text-ink">{l.name}</span>
-                <span className="text-right font-mono text-[11px] text-ink-faint">
-                  {l.level}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      </dl>
     </section>
   );
 }

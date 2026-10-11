@@ -3,16 +3,30 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    color-scheme: dark;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
   * {
-    @apply border-base-border;
+    @apply border-line;
   }
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    scrollbar-color: #2c3844 #0a0e13;
   }
 
   body {
-    @apply bg-base font-body text-ink antialiased;
+    @apply bg-canvas font-body text-ink antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
   }
 
   ::selection {
@@ -20,7 +34,26 @@
   }
 
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-signal-blue;
+    @apply rounded-sm outline outline-2 outline-offset-2 outline-signal-blue;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0a0e13;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #2c3844;
+    border: 2px solid #0a0e13;
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3fb950;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -28,8 +61,10 @@
     *::before,
     *::after {
       animation-duration: 0.01ms !important;
+      animation-delay: 0ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
+      transition-delay: 0ms !important;
       scroll-behavior: auto !important;
     }
   }
@@ -51,5 +86,256 @@
   .node-dot::after {
     content: "";
     @apply absolute inset-0 animate-blink rounded-full bg-signal-green/60;
+  }
+
+  .chip {
+    @apply rounded border border-line px-2 py-0.5 font-mono text-[11px] text-ink-faint;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-md px-5 font-mono text-xs font-medium uppercase tracking-wider;
+    transition:
+      transform 140ms var(--ease-out),
+      box-shadow 220ms var(--ease-out),
+      background-color 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease;
+  }
+
+  .btn:active {
+    transform: scale(0.97);
+  }
+
+  .btn-primary {
+    @apply bg-signal-green text-canvas;
+  }
+
+  .btn-ghost {
+    @apply border border-line bg-canvas/40 text-ink;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .btn-primary:hover {
+      background-color: #56d364;
+      box-shadow: 0 10px 28px -10px rgba(63, 185, 80, 0.65);
+    }
+
+    .btn-ghost:hover {
+      @apply border-signal-blue text-signal-blue;
+    }
+  }
+
+  /* Panels with a cursor-tracked highlight (see Spotlight.tsx) */
+  .panel {
+    @apply relative overflow-hidden rounded-xl border border-line bg-surface;
+    transition: border-color 220ms ease;
+  }
+
+  .panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(
+      420px circle at var(--mx, 50%) var(--my, 0%),
+      rgba(76, 158, 235, 0.13),
+      transparent 60%
+    );
+    transition: opacity 300ms ease;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .panel:hover {
+      border-color: rgba(76, 158, 235, 0.45);
+    }
+
+    .panel:hover::before {
+      opacity: 1;
+    }
+  }
+
+  /* Scroll progress, driven by the page scroll position where supported */
+  .scroll-progress {
+    display: none;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .scroll-progress {
+      @apply absolute inset-x-0 -bottom-px block h-0.5 origin-left bg-signal-green;
+      animation: grow-x linear both;
+      animation-timeline: scroll(root);
+    }
+  }
+
+  /* Experience spine fills as the timeline scrolls through the viewport */
+  .spine-fill {
+    display: none;
+  }
+
+  @supports (animation-timeline: view()) {
+    .spine-fill {
+      @apply absolute -left-px top-0 block h-full w-px origin-top bg-signal-green;
+      animation: grow-y linear both;
+      animation-timeline: view();
+    }
+  }
+
+  /* Soft colour fields behind the hero and footer */
+  .aurora {
+    @apply pointer-events-none absolute;
+    background: radial-gradient(closest-side, currentColor, transparent);
+  }
+
+  /* Hero entrance: one staggered sequence on load */
+  .hero-line {
+    animation: hero-in 800ms var(--ease-out-expo) both;
+    animation-delay: calc(var(--i, 0) * 80ms + 80ms);
+  }
+
+  /* Topology diagram */
+  .topo-edge {
+    fill: none;
+    stroke: #2c3844;
+    stroke-width: 1;
+    stroke-dasharray: 100;
+    animation: draw 900ms var(--ease-out-expo) both;
+    animation-delay: calc(var(--i, 0) * 90ms + 500ms);
+  }
+
+  .topo-pulse {
+    fill: none;
+    stroke: #3fb950;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-dasharray: 7 93;
+    opacity: 0;
+    filter: drop-shadow(0 0 4px rgba(63, 185, 80, 0.9));
+  }
+
+  [data-inview="true"] .topo-pulse {
+    animation: pulse-travel 2.8s linear infinite;
+    animation-delay: calc(var(--i, 0) * 470ms + 1600ms);
+  }
+
+  .topo-node {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: node-in 700ms var(--ease-out-expo) both;
+    animation-delay: calc(var(--i, 0) * 90ms + 350ms);
+  }
+
+  .topo-halo {
+    transform-box: fill-box;
+    transform-origin: center;
+    opacity: 0.35;
+  }
+
+  [data-inview="true"] .topo-halo {
+    animation: halo 3.2s ease-in-out infinite;
+  }
+
+  /* Scroll reveals (see InView.tsx). Content stays visible without JS. */
+  [data-reveal] {
+    transition:
+      opacity 700ms var(--ease-out-expo),
+      transform 700ms var(--ease-out-expo);
+    transition-delay: calc(var(--i, 0) * 70ms);
+  }
+
+  html.js [data-inview="false"] [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  .divider-line {
+    transform-origin: left;
+    transition: transform 1100ms var(--ease-out-expo);
+  }
+
+  html.js [data-inview="false"] .divider-line {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes grow-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes grow-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulse-travel {
+  0% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  70%,
+  100% {
+    stroke-dashoffset: -93;
+    opacity: 0;
+  }
+}
+
+@keyframes node-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes halo {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.04);
   }
 }

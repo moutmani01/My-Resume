@@ -26,11 +26,17 @@ export default async function AboutPage() {
       <StatusBar />
       <Header />
       <main className="container-page py-20 md:py-28">
-        <p className="eyebrow mb-4">Long-Form</p>
-        <h1 className="mb-10 font-display text-3xl font-medium text-ink md:text-4xl">
+        <p className="eyebrow hero-line mb-5">Long-Form</p>
+        <h1
+          className="hero-line mb-12 font-display text-4xl font-medium tracking-[-0.03em] text-ink md:text-6xl"
+          style={{ "--i": 1 } as React.CSSProperties}
+        >
           About {profile.name}
         </h1>
-        <article className="prose-invert max-w-2xl space-y-5 text-sm leading-relaxed text-ink-muted [&_h2]:mb-3 [&_h2]:mt-10 [&_h2]:font-display [&_h2]:text-lg [&_h2]:font-medium [&_h2]:text-ink [&_strong]:text-ink">
+        <article
+          className="hero-line max-w-2xl space-y-5 text-base leading-relaxed text-ink-muted md:text-lg [&_h2]:mb-3 [&_h2]:mt-12 [&_h2]:font-display [&_h2]:text-2xl [&_h2]:font-medium [&_h2]:tracking-tight [&_h2]:text-ink [&_strong]:font-medium [&_strong]:text-ink"
+          style={{ "--i": 2 } as React.CSSProperties}
+        >
           <MDXRemote source={source} />
         </article>
       </main>

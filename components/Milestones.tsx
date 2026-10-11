@@ -20,33 +20,35 @@ export function Milestones() {
         description="Roles, degrees, certifications, and measurable results, in the order they happened."
       />
 
-      <div className="space-y-3">
+      <ol className="border-t border-line">
         {sorted.map((m) => {
           const style = typeStyles[m.type] ?? typeStyles.role;
           return (
-            <div
+            <li
               key={m.id}
-              className="flex flex-col gap-2 border-b border-base-border/70 py-3 sm:flex-row sm:items-baseline sm:gap-6"
+              className="grid gap-x-6 gap-y-2 border-b border-line py-4 transition-colors duration-200 hover:bg-surface/60 sm:grid-cols-[7.5rem_4.5rem_1fr] sm:items-baseline sm:px-3"
             >
-              <span className="w-24 shrink-0 font-mono text-xs text-ink-faint">
+              <span className="font-mono text-xs tabular-nums text-ink-faint">
                 {m.date}
               </span>
               <span
                 className={cx(
-                  "w-fit shrink-0 rounded border px-2 py-0.5 font-mono text-[10px] tracking-wider",
+                  "w-fit rounded border px-2 py-0.5 font-mono text-[10px] tracking-wider",
                   style?.color,
                 )}
               >
                 {style?.label}
               </span>
               <div>
-                <p className="text-sm font-medium text-ink">{m.title}</p>
-                <p className="text-sm text-ink-muted">{m.detail}</p>
+                <p className="text-base font-medium text-ink">{m.title}</p>
+                <p className="mt-0.5 text-sm leading-relaxed text-ink-muted">
+                  {m.detail}
+                </p>
               </div>
-            </div>
+            </li>
           );
         })}
-      </div>
+      </ol>
     </section>
   );
 }

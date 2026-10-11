@@ -8,11 +8,15 @@ export function SectionHeading({
   description?: string;
 }) {
   return (
-    <div className="mb-10 max-w-2xl">
-      <p className="eyebrow mb-3">{eyebrow}</p>
-      <h2 className="font-display text-2xl font-medium text-ink md:text-3xl">{title}</h2>
+    <div className="mb-12 max-w-2xl md:mb-14">
+      <p className="eyebrow mb-4">{eyebrow}</p>
+      <h2 className="font-display text-3xl font-medium tracking-[-0.025em] text-ink md:text-5xl">
+        {title}
+      </h2>
       {description && (
-        <p className="mt-3 text-sm leading-relaxed text-ink-muted">{description}</p>
+        <p className="mt-4 text-base leading-relaxed text-ink-muted md:text-lg">
+          {description}
+        </p>
       )}
     </div>
   );

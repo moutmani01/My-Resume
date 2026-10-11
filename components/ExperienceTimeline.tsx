@@ -1,5 +1,6 @@
 import { experience } from "@/content/experience";
 import { SectionHeading } from "./SectionHeading";
+import { cx } from "@/lib/utils";
 
 export function ExperienceTimeline() {
   return (
@@ -10,52 +11,63 @@ export function ExperienceTimeline() {
         description="A chronological record of roles, responsibilities, and the platforms shipped along the way."
       />
 
-      <ol className="relative space-y-12 border-l border-base-border pl-8">
+      <ol className="relative space-y-16 border-l border-line pl-7 md:pl-10">
+        <span className="spine-fill" aria-hidden />
         {experience.map((role) => (
           <li key={role.id} className="relative">
             <span
-              className={`absolute -left-[2.28rem] top-1.5 h-3 w-3 rounded-full border-2 border-base ${
-                role.current ? "bg-signal-green" : "bg-base-border"
-              }`}
+              className={cx(
+                "absolute top-2 h-3 w-3 -translate-x-1/2 rounded-full border-2 border-canvas",
+                "-left-7 md:-left-10",
+                role.current ? "bg-signal-green" : "bg-ink-faint",
+              )}
               aria-hidden
             />
-            <div className="mb-2 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-              <h3 className="font-display text-lg font-medium text-ink md:text-xl">
-                {role.title} <span className="text-ink-muted">— {role.company}</span>
+            <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+              <h3 className="font-display text-xl font-medium tracking-tight text-ink md:text-2xl">
+                {role.title}
               </h3>
               <span className="font-mono text-xs uppercase tracking-wider text-ink-faint">
                 {role.start} → {role.end}
               </span>
             </div>
-            <p className="mb-4 font-mono text-xs text-ink-faint">{role.location}</p>
-            <p className="mb-5 max-w-2xl text-sm leading-relaxed text-ink-muted">
+            <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+              <span className="font-medium text-signal-blue">{role.company}</span>
+              <span className="font-mono text-xs text-ink-faint">{role.location}</span>
+              {role.current && (
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-signal-green/40 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-signal-green">
+                  <span className="node-dot h-1.5 w-1.5" aria-hidden />
+                  Current
+                </span>
+              )}
+            </p>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-muted">
               {role.summary}
             </p>
 
-            <div className="grid gap-4 md:grid-cols-2">
+            <dl className="mt-6 border-t border-line">
               {role.highlights.map((h) => (
                 <div
                   key={h.label}
-                  className="rounded-md border border-base-border bg-base-surface p-4"
+                  className="grid gap-x-8 gap-y-1.5 border-b border-line py-4 md:grid-cols-[15rem_1fr]"
                 >
-                  <p className="mb-1.5 font-mono text-[11px] uppercase tracking-wider text-signal-green">
+                  <dt className="font-mono text-xs uppercase leading-relaxed tracking-wider text-signal-green">
                     {h.label}
-                  </p>
-                  <p className="text-sm leading-relaxed text-ink-muted">{h.detail}</p>
+                  </dt>
+                  <dd className="max-w-2xl text-sm leading-relaxed text-ink-muted">
+                    {h.detail}
+                  </dd>
                 </div>
               ))}
-            </div>
+            </dl>
 
-            <div className="mt-4 flex flex-wrap gap-1.5">
+            <ul className="mt-5 flex flex-wrap gap-1.5">
               {role.stack.map((s) => (
-                <span
-                  key={s}
-                  className="rounded border border-base-border px-2 py-0.5 font-mono text-[10px] text-ink-faint"
-                >
+                <li key={s} className="chip">
                   {s}
-                </span>
+                </li>
               ))}
-            </div>
+            </ul>
           </li>
         ))}
       </ol>

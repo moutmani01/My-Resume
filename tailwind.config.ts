@@ -10,16 +10,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        base: {
-          DEFAULT: "#0A0E13",
-          surface: "#10161D",
-          raised: "#161E27",
-          border: "#232D38",
-        },
+        canvas: "#0A0E13",
+        surface: "#10161D",
+        raised: "#161E27",
+        line: "#232D38",
         ink: {
           DEFAULT: "#E6EDF3",
-          muted: "#8896A0",
-          faint: "#57626D",
+          muted: "#9BA8B3",
+          faint: "#7A8794",
         },
         signal: {
           green: "#3FB950",
@@ -39,23 +37,17 @@ const config: Config = {
       backgroundSize: {
         grid: "40px 40px",
       },
+      transitionTimingFunction: {
+        out: "cubic-bezier(0.23, 1, 0.32, 1)",
+        "out-expo": "cubic-bezier(0.16, 1, 0.3, 1)",
+      },
       animation: {
         blink: "blink 1.6s step-start infinite",
-        scan: "scan 3s linear infinite",
-        "fade-up": "fade-up 0.6s ease-out both",
       },
       keyframes: {
         blink: {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.25" },
-        },
-        scan: {
-          "0%": { backgroundPosition: "0% 0%" },
-          "100%": { backgroundPosition: "0% 200%" },
-        },
-        "fade-up": {
-          "0%": { opacity: "0", transform: "translateY(10px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
         },
       },
     },

@@ -2,16 +2,19 @@ import { profile } from "@/content/profile";
 
 export function Footer() {
   return (
-    <footer id="contact" className="border-t border-base-border">
-      <div className="container-page py-16 md:py-24">
-        <p className="eyebrow mb-4">Get In Touch</p>
-        <h2 className="max-w-xl font-display text-2xl font-medium text-ink md:text-4xl">
+    <footer id="contact" className="relative overflow-hidden border-t border-line">
+      <div className="absolute inset-0 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_70%_80%_at_50%_100%,black,transparent)]" />
+      <div className="aurora -bottom-72 left-[15%] h-[40rem] w-[52rem] text-signal-green/15" />
+
+      <div className="container-page relative py-20 md:py-28">
+        <p className="eyebrow mb-5">Get In Touch</p>
+        <h2 className="max-w-3xl font-display text-4xl font-medium leading-[1.05] tracking-[-0.03em] text-ink md:text-6xl">
           Open to enterprise AI, cloud, and DevSecOps architecture roles.
         </h2>
-        <div className="mt-8 flex flex-wrap gap-4">
+        <div className="mt-10 flex flex-wrap gap-3">
           <a
             href={`mailto:${profile.email}`}
-            className="rounded bg-signal-green px-5 py-2.5 font-mono text-base text-xs font-medium uppercase tracking-wider transition-opacity hover:opacity-90"
+            className="btn btn-primary normal-case tracking-normal"
           >
             {profile.email}
           </a>
@@ -19,46 +22,55 @@ export function Footer() {
             href={profile.linkedin}
             target="_blank"
             rel="noreferrer"
-            className="rounded border border-base-border px-5 py-2.5 font-mono text-xs uppercase tracking-wider text-ink transition-colors hover:border-signal-blue hover:text-signal-blue"
+            className="btn btn-ghost"
           >
-            {profile.linkedinLabel}
+            LinkedIn
           </a>
           <a
             href={profile.github}
             target="_blank"
             rel="noreferrer"
-            className="rounded border border-base-border px-5 py-2.5 font-mono text-xs uppercase tracking-wider text-ink transition-colors hover:border-signal-blue hover:text-signal-blue"
+            className="btn btn-ghost"
           >
-            {profile.githubLabel}
+            GitHub
+          </a>
+          <a href="/resume.pdf" download className="btn btn-ghost">
+            Download résumé
           </a>
         </div>
 
-        <div className="mt-10 flex flex-wrap gap-x-8 gap-y-2 font-mono text-xs text-ink-faint">
+        <div className="mt-8 flex flex-wrap gap-x-8 gap-y-2 font-mono text-sm text-ink-muted">
           {profile.phones.map((p) => (
-            <span key={p}>{p}</span>
+            <a
+              key={p}
+              href={`tel:${p.replace(/\s/g, "")}`}
+              className="transition-colors hover:text-ink"
+            >
+              {p}
+            </a>
           ))}
           <span>{profile.location}</span>
         </div>
 
-        <div className="mt-8 rounded-md border border-base-border bg-base-surface p-4">
-          <p className="eyebrow mb-3">B2B Engagement</p>
-          <div className="flex flex-wrap gap-2">
+        <div className="mt-12 max-w-3xl rounded-xl border border-line bg-surface/80 p-6">
+          <p className="eyebrow mb-4">B2B Engagement</p>
+          <ul className="flex flex-wrap gap-2">
             {profile.businessEntities.map((entity) => (
-              <span
+              <li
                 key={entity.label}
-                className="rounded-full border border-base-border px-3 py-1 font-mono text-[11px] text-ink-muted"
+                className="rounded-full border border-line px-3 py-1 font-mono text-xs text-ink-muted"
               >
                 {entity.region} — {entity.label}
-              </span>
+              </li>
             ))}
-          </div>
-          <p className="mt-3 text-xs text-ink-faint">
+          </ul>
+          <p className="mt-4 text-sm leading-relaxed text-ink-muted">
             Available for B2B contracting through any of the entities above — ask about
             the setup that works best for your procurement process.
           </p>
         </div>
 
-        <p className="mt-16 font-mono text-[10px] uppercase tracking-wider text-ink-faint">
+        <p className="mt-16 font-mono text-[11px] uppercase tracking-wider text-ink-faint">
           © {new Date().getFullYear()} {profile.name}. Built with Next.js & Tailwind CSS.
         </p>
       </div>
