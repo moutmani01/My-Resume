@@ -16,7 +16,7 @@ export function Projects() {
       <div className="space-y-5">
         {projects.map((p) => (
           <InView key={p.id} rootMargin="0px 0px -8% 0px">
-            <Spotlight className="p-6 md:p-8">
+            <Spotlight id={p.id} className="p-6 md:p-8">
               <div
                 data-reveal
                 className="relative grid gap-x-12 gap-y-8 lg:grid-cols-[1.1fr_0.9fr]"

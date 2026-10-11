@@ -4,6 +4,7 @@ import { Hero } from "@/components/Hero";
 import { TopologyDivider } from "@/components/TopologyDivider";
 import { ExperienceTimeline } from "@/components/ExperienceTimeline";
 import { Projects } from "@/components/Projects";
+import { Services } from "@/components/Services";
 import { Milestones } from "@/components/Milestones";
 import { Certifications } from "@/components/Certifications";
 import { Skills } from "@/components/Skills";
@@ -23,6 +24,8 @@ export default function Home() {
         <ExperienceTimeline />
         <TopologyDivider label="projects.json" />
         <Projects />
+        <TopologyDivider label="services.catalog" />
+        <Services />
         <TopologyDivider label="skills.matrix" />
         <Skills />
         <TopologyDivider label="milestones.timeline" />
