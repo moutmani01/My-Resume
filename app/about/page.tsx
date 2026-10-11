@@ -37,6 +37,15 @@ export default async function AboutPage() {
           className="hero-line max-w-2xl space-y-5 text-base leading-relaxed text-ink-muted md:text-lg [&_h2]:mb-3 [&_h2]:mt-12 [&_h2]:font-display [&_h2]:text-2xl [&_h2]:font-medium [&_h2]:tracking-tight [&_h2]:text-ink [&_strong]:font-medium [&_strong]:text-ink"
           style={{ "--i": 2 } as React.CSSProperties}
         >
+          <div className="portrait float-right mb-4 ml-6 h-40 w-32 md:h-56 md:w-44">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/portrait.webp"
+              alt={`Portrait of ${profile.name}`}
+              width={314}
+              height={392}
+            />
+          </div>
           <MDXRemote source={source} />
         </article>
       </main>

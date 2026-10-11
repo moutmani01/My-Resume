@@ -54,11 +54,13 @@ export function Header() {
                   href={item.href}
                   aria-current={isActive ? "true" : undefined}
                   className={cx(
-                    "relative py-2 transition-colors duration-200 hover:text-ink",
+                    "relative inline-flex py-2 transition-colors duration-200",
                     isActive ? "text-ink" : "text-ink-muted",
                   )}
                 >
-                  {item.label}
+                  <span className="roll" data-text={item.label}>
+                    <span>{item.label}</span>
+                  </span>
                   <span
                     aria-hidden
                     className={cx(

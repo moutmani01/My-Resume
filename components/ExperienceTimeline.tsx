@@ -1,5 +1,6 @@
 import { experience } from "@/content/experience";
 import { SectionHeading } from "./SectionHeading";
+import { FocusItem } from "./FocusItem";
 import { cx } from "@/lib/utils";
 
 export function ExperienceTimeline() {
@@ -14,7 +15,7 @@ export function ExperienceTimeline() {
       <ol className="relative space-y-16 border-l border-line pl-7 md:pl-10">
         <span className="spine-fill" aria-hidden />
         {experience.map((role) => (
-          <li key={role.id} className="relative">
+          <FocusItem key={role.id} className="relative">
             <span
               className={cx(
                 "absolute top-2 h-3 w-3 -translate-x-1/2 rounded-full border-2 border-canvas",
@@ -68,7 +69,7 @@ export function ExperienceTimeline() {
                 </li>
               ))}
             </ul>
-          </li>
+          </FocusItem>
         ))}
       </ol>
     </section>

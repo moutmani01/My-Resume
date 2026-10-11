@@ -8,6 +8,8 @@ import { Milestones } from "@/components/Milestones";
 import { Certifications } from "@/components/Certifications";
 import { Skills } from "@/components/Skills";
 import { Footer } from "@/components/Footer";
+import { Marquee } from "@/components/Marquee";
+import { FloatingCta } from "@/components/FloatingCta";
 
 export default function Home() {
   return (
@@ -16,6 +18,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Marquee />
         <TopologyDivider label="experience.log" />
         <ExperienceTimeline />
         <TopologyDivider label="projects.json" />
@@ -28,6 +31,7 @@ export default function Home() {
         <Certifications />
       </main>
       <Footer />
+      <FloatingCta />
     </>
   );
 }

@@ -236,6 +236,127 @@
     animation: halo 3.2s ease-in-out infinite;
   }
 
+  /* Headline words rise from behind a mask */
+  .split-word {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding-bottom: 0.14em;
+    margin-bottom: -0.14em;
+  }
+
+  .split-word > span {
+    display: inline-block;
+    transition: transform 900ms var(--ease-out-expo);
+    transition-delay: calc(var(--i, 0) * 70ms);
+  }
+
+  html.js [data-inview="false"] .split-word > span {
+    transform: translateY(115%);
+  }
+
+  .split-load .split-word > span {
+    animation: word-up 1000ms var(--ease-out-expo) both;
+    animation-delay: calc(var(--i, 0) * 110ms + 160ms);
+  }
+
+  /* Nav labels roll to a second copy on hover */
+  .roll {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+  }
+
+  .roll > span,
+  .roll::after {
+    display: block;
+    transition: transform 320ms var(--ease-out);
+  }
+
+  .roll::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    @apply text-signal-green;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    a:hover > .roll > span,
+    a:hover > .roll::after {
+      transform: translateY(-100%);
+    }
+  }
+
+  /* Tool ticker under the hero */
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  }
+
+  .marquee-row {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 2rem;
+    padding-right: 2rem;
+    animation: marquee 70s linear infinite;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .marquee:hover .marquee-row {
+      animation-play-state: paused;
+    }
+  }
+
+  /* Experience entries step into focus as they cross mid-viewport */
+  [data-focus] {
+    transition: opacity 500ms ease;
+  }
+
+  html.js [data-focus="false"] {
+    opacity: 0.7;
+  }
+
+  /* Floating contact pill */
+  .floating-cta {
+    @apply fixed bottom-5 right-5 z-30 inline-flex items-center gap-3 rounded-full bg-signal-green py-1.5 pl-5 pr-1.5 font-display text-sm font-medium text-canvas md:bottom-8 md:right-8;
+    box-shadow: 0 14px 34px -12px rgba(63, 185, 80, 0.7);
+    transition:
+      opacity 250ms ease,
+      transform 400ms var(--ease-out-expo);
+  }
+
+  .floating-cta[data-visible="false"] {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(16px) scale(0.96);
+  }
+
+  .floating-cta:active {
+    transform: scale(0.97);
+  }
+
+  /* Portrait */
+  .portrait {
+    @apply relative overflow-hidden rounded-2xl border border-line bg-surface;
+    box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.9);
+  }
+
+  .portrait img {
+    @apply block h-full w-full object-cover;
+  }
+
+  .portrait::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(to top, rgba(10, 14, 19, 0.55), transparent 45%);
+  }
+
   /* Scroll reveals (see InView.tsx). Content stays visible without JS. */
   [data-reveal] {
     transition:
@@ -287,6 +408,21 @@
     opacity: 1;
     transform: translateY(0);
     filter: blur(0);
+  }
+}
+
+@keyframes word-up {
+  from {
+    transform: translateY(115%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-100%);
   }
 }
 
