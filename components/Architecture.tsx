@@ -12,7 +12,7 @@ export function Architecture({ layers }: { layers: ArchLayer[] }) {
         {layers.map((layer, i) => (
           <li key={layer.label}>
             {i > 0 && (
-              <span className="arch-link" aria-hidden>
+              <span className="arch-link" data-flow={layer.flow} aria-hidden>
                 <span
                   className="arch-pulse"
                   style={{ "--i": i } as React.CSSProperties}
@@ -30,6 +30,11 @@ export function Architecture({ layers }: { layers: ArchLayer[] }) {
                   </li>
                 ))}
               </ul>
+              {layer.note && (
+                <p className="mt-2.5 text-xs leading-relaxed text-ink-muted">
+                  {layer.note}
+                </p>
+              )}
             </div>
           </li>
         ))}

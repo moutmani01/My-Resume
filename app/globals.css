@@ -389,6 +389,15 @@
     transform: translateX(-50%) rotate(45deg);
   }
 
+  .arch-link[data-flow="up"]::after {
+    @apply -top-px bottom-auto;
+    transform: translateX(-50%) rotate(-135deg);
+  }
+
+  .arch-link[data-flow="up"] .arch-pulse {
+    animation-direction: reverse;
+  }
+
   .arch-pulse {
     @apply absolute -left-px top-0 h-2 w-[3px] rounded-full bg-signal-green opacity-0;
   }
