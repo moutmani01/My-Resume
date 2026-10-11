@@ -37,6 +37,9 @@ export function Footer() {
           <a href="/resume.pdf" download className="btn btn-ghost">
             Download résumé
           </a>
+          <a href="/cv-fr.pdf" download className="btn btn-ghost">
+            CV en français
+          </a>
         </div>
 
         <div className="mt-8 flex flex-wrap gap-x-8 gap-y-2 font-mono text-sm text-ink-muted">
