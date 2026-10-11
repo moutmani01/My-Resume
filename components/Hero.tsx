@@ -1,5 +1,6 @@
 import { profile } from "@/content/profile";
 import { HeroTopology } from "./HeroTopology";
+import { SplitText } from "./SplitText";
 
 const line = (i: number) => ({ "--i": i }) as React.CSSProperties;
 
@@ -12,15 +13,23 @@ export function Hero() {
 
       <div className="container-page relative grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[1.2fr_0.8fr] lg:gap-10">
         <div>
-          <p className="eyebrow hero-line mb-6 flex items-start gap-2.5" style={line(0)}>
-            <span className="node-dot mt-1" />
-            <span>SYSTEM ONLINE — {profile.location.toUpperCase()}</span>
-          </p>
-          <h1
-            className="hero-line font-display text-5xl font-medium leading-[1.02] tracking-[-0.035em] text-ink sm:text-6xl md:text-7xl xl:text-[5.5rem]"
-            style={line(1)}
-          >
-            {profile.name}
+          <div className="hero-line mb-7 flex items-center gap-4" style={line(0)}>
+            <div className="portrait h-20 w-16 shrink-0 md:h-24 md:w-20">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/portrait.webp"
+                alt={`Portrait of ${profile.name}`}
+                width={314}
+                height={392}
+              />
+            </div>
+            <p className="eyebrow flex items-start gap-2.5">
+              <span className="node-dot mt-1" />
+              <span>SYSTEM ONLINE — {profile.location.toUpperCase()}</span>
+            </p>
+          </div>
+          <h1 className="split-load font-display text-5xl font-medium leading-[1.02] tracking-[-0.035em] text-ink sm:text-6xl md:text-7xl xl:text-[5.5rem]">
+            <SplitText text={profile.name} />
           </h1>
           <p
             className="hero-line mt-5 max-w-2xl font-mono text-sm uppercase leading-relaxed tracking-[0.14em] text-signal-blue md:text-lg"
