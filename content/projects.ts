@@ -114,15 +114,15 @@ export const projects: Project[] = [
     problem:
       "Fragmented monitoring tools meant slow detection and blind spots across hybrid infrastructure.",
     approach: [
-      "Architected unified telemetry pipelines with Nagios, the Grafana stack, the ELK stack, and Dynatrace.",
+      "Architected unified telemetry pipelines with Centreon, the LGTM stack, the ELK stack, and Dynatrace.",
       "Built proactive threat-alerting and deep performance-profiling dashboards for cluster stability.",
-      "Standardized monitoring across Windows, Linux, AIX, and virtualized estates with Centreon and Prometheus.",
+      "Standardized monitoring across Windows, Linux, AIX, Nutanix, Kubernetes, and applications, from application to middleware, OS, virtualization, and hardware.",
     ],
     metrics: [
       { value: "4", label: "Monitoring stacks unified" },
       { value: "24/7", label: "Proactive alerting coverage" },
     ],
-    stack: ["Grafana", "ELK Stack", "Dynatrace", "Nagios", "Prometheus", "Centreon"],
+    stack: ["Centreon", "LGTM Stack", "ELK Stack", "Dynatrace"],
     architecture: [
       {
         label: "Sources",
